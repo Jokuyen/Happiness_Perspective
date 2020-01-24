@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.happinessperspective.R
+import com.example.happinessperspective.databinding.NewEntryFragmentBinding
 import com.example.happinessperspective.viewModels.NewEntryViewModel
 
 class NewEntry : Fragment() {
@@ -18,7 +19,9 @@ class NewEntry : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.new_entry_fragment, container, false)
+        val binding = NewEntryFragmentBinding.inflate(inflater)
+
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
