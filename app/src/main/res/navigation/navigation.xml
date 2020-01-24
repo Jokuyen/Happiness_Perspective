@@ -12,11 +12,11 @@
         tools:layout="@layout/home_fragment">
         <action
             android:id="@+id/action_homeFragment_to_newEntry"
-            app:destination="@id/newEntry" />
+            app:destination="@id/newEntryFragment" />
     </fragment>
     <fragment
-        android:id="@+id/newEntry"
-        android:name="com.example.happinessperspective.fragments.NewEntry"
-        android:label="NewEntry" />
+        android:id="@+id/newEntryFragment"
+        android:name="com.example.happinessperspective.fragments.NewEntryFragment"
+        android:label="New Entry" />
 
 </navigation>

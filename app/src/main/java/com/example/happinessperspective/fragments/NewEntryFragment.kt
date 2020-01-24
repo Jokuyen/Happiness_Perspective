@@ -11,7 +11,7 @@ import com.example.happinessperspective.R
 import com.example.happinessperspective.databinding.NewEntryFragmentBinding
 import com.example.happinessperspective.viewModels.NewEntryViewModel
 
-class NewEntry : Fragment() {
+class NewEntryFragment : Fragment() {
 
     private lateinit var viewModel: NewEntryViewModel
 
