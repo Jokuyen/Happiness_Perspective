@@ -50,7 +50,7 @@ class NewEntryFragment : Fragment() {
                 val monthString = DateFormatSymbols().getMonths()[inputMonth]
                 date_picker_button.text = monthString + " " + inputDay + ", " + inputYear
 
-                val newColor = ContextCompat.getColor(requireContext(), R.color.secondaryDarkColor)
+                val newColor = ContextCompat.getColor(requireContext(), R.color.secondaryColor)
                 date_picker_button.setBackgroundTintList(ColorStateList.valueOf(newColor))
             }, defaultYear, defaultMonth, defaultDay)
 
