@@ -6,15 +6,16 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.happinessperspective.viewModels.HomeViewModel" />
+            type="com.example.happinessperspective.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.HomeFragment">
+        tools:context=".home.HomeFragment">
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/newEntryFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -28,7 +29,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:onClick="@{() -> viewModel.onFabClicked()}"/>
+            android:onClick="@{() -> viewModel.onFabClicked()}"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

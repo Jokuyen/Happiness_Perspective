@@ -1,4 +1,4 @@
-package com.example.happinessperspective.fragments
+package com.example.happinessperspective.home
 
 
 import android.os.Bundle
@@ -12,7 +12,6 @@ import androidx.navigation.findNavController
 
 import com.example.happinessperspective.R
 import com.example.happinessperspective.databinding.HomeFragmentBinding
-import com.example.happinessperspective.viewModels.HomeViewModel
 
 class HomeFragment : Fragment() {
 
@@ -30,10 +29,12 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
+        // Create and bind view model
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         binding.viewModel = viewModel
 
+        // Navigation Observer
         viewModel.navigateToNewEntry.observe( viewLifecycleOwner,
             Observer<Boolean> { shouldNavigate ->
                 if (shouldNavigate == true) {

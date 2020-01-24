@@ -1,4 +1,4 @@
-package com.example.happinessperspective.viewModels
+package com.example.happinessperspective.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
