@@ -4,4 +4,6 @@
     <string name="fab_label">New Entry</string>
 
     <string name="pick_date">Enter Date</string>
+    <string name="subjectHintText">Subject</string>
+    <string name="noteHintText">Note (Optional)</string>
 </resources>
