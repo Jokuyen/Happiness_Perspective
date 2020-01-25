@@ -9,15 +9,11 @@ data class Entry (
     @PrimaryKey(autoGenerate = true)
     var entryId: Int = 0,
 
-    var subject: String? = null,
+    var date: String,
 
-    var note: String? = null,
+    var subject: String,
 
-    var year: Int = -1,
-
-    var month: Int = -1,
-
-    var day: Int = -1,
+    var note: String?,
 
     var favorite: Boolean = false
 )

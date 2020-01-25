@@ -16,7 +16,6 @@ import com.example.happinessperspective.R
 import com.example.happinessperspective.database.EntryDatabase
 
 import com.example.happinessperspective.databinding.NewEntryFragmentBinding
-import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.new_entry_fragment.*
 
 class NewEntryFragment : Fragment() {
@@ -37,7 +36,6 @@ class NewEntryFragment : Fragment() {
 
         // Get a reference to the ViewModel associated with this fragment
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(NewEntryViewModel::class.java)
-
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
 
@@ -50,8 +48,20 @@ class NewEntryFragment : Fragment() {
             subjectString = subjectString.trim()
 
             if (TextUtils.isEmpty(subjectString)) {
-                subject_text.setError("Subject cannot be empty")
+                subject_text.setError("Subject cannot be empty!")
             } else {
+                viewModel.setSubject(subjectString)
+
+                var noteString: String = note_text.text.toString()
+                noteString = noteString.trim()
+
+                if (!TextUtils.isEmpty(noteString)) {
+                    viewModel.setNote(noteString)
+                }
+
+                // Insert new entry into database
+                viewModel.insertEntry()
+
                 // Navigate to the next screen
             }
         }
@@ -67,6 +77,8 @@ class NewEntryFragment : Fragment() {
 
         val datePicker = DatePickerDialog(requireContext(),
             DatePickerDialog.OnDateSetListener { _, inputYear, inputMonth, inputDay ->
+                viewModel.setDate(inputYear, inputMonth, inputDay)
+
                 val monthString = DateFormatSymbols().getMonths()[inputMonth]
                 date_picker_button.text = monthString + " " + inputDay + ", " + inputYear
 
