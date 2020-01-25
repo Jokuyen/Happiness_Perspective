@@ -52,7 +52,7 @@ class NewEntryFragment : Fragment() {
             if (TextUtils.isEmpty(subjectString)) {
                 subject_text.setError("Subject cannot be empty")
             } else {
-
+                // Navigate to the next screen
             }
         }
 
