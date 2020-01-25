@@ -12,24 +12,10 @@ import com.example.happinessperspective.database.EntryDao
 import kotlinx.coroutines.*
 
 class NewEntryViewModel(val dao: EntryDao, application: Application) : AndroidViewModel(application) {
+    // Variables for entry object
     private var _date: String = ""
     private var _subject: String = ""
     private var _note: String? = null
-
-    private val _navigateToCurrentMonthDetails = MutableLiveData<Boolean>()
-    val navigateToCurrentMonthDetails: LiveData<Boolean>
-        get() = _navigateToCurrentMonthDetails
-
-    fun onSubmitButtonClicked() {
-        _navigateToCurrentMonthDetails.value = true
-    }
-
-    fun onNavigatedCompleted() {
-        _navigateToCurrentMonthDetails.value = false
-    }
-
-    private var viewModelJob = Job()
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     fun setDate(year: Int, month: Int, day: Int) {
         val monthString = String.format("%02d", month + 1)
@@ -45,6 +31,23 @@ class NewEntryViewModel(val dao: EntryDao, application: Application) : AndroidVi
     fun setNote(input: String) {
         _note = input
     }
+
+    // Navigation variables
+    private val _navigateToCurrentMonthDetails = MutableLiveData<Boolean>()
+    val navigateToCurrentMonthDetails: LiveData<Boolean>
+        get() = _navigateToCurrentMonthDetails
+
+    fun onSubmitButtonClicked() {
+        _navigateToCurrentMonthDetails.value = true
+    }
+
+    fun onNavigatedCompleted() {
+        _navigateToCurrentMonthDetails.value = false
+    }
+
+    // Database methods
+    private var viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     fun insertEntry() {
         uiScope.launch {

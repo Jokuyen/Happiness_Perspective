@@ -8,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.happinessperspective.R
+import com.example.happinessperspective.database.EntryDatabase
 import com.example.happinessperspective.databinding.CurrentMonthDetailsFragmentBinding
 
 class CurrentMonthDetailsFragment : Fragment() {
 
     private lateinit var viewModel: CurrentMonthDetailsViewModel
     private lateinit var binding: CurrentMonthDetailsFragmentBinding
+    private lateinit var viewModelFactory: CurrentMonthDetailsViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,8 +32,16 @@ class CurrentMonthDetailsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(CurrentMonthDetailsViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        // Create an instance of the ViewModel Factory
+        val application = requireNotNull(this.activity).application
+        val dataSource = EntryDatabase.getInstance(application).entryDao
+        viewModelFactory = CurrentMonthDetailsViewModelFactory(dataSource, application)
+
+        // Get a reference to the ViewModel associated with this fragment
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(CurrentMonthDetailsViewModel::class.java)
+        binding.setLifecycleOwner(this)
+        binding.viewModel = viewModel
     }
 
 }
