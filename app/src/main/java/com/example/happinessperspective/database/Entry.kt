@@ -9,9 +9,9 @@ data class Entry (
     @PrimaryKey(autoGenerate = true)
     var entryId: Int = 0,
 
-    var subject: String = "",
+    var subject: String? = null,
 
-    var note: String?,
+    var note: String? = null,
 
     var year: Int = -1,
 
