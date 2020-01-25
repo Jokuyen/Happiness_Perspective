@@ -18,6 +18,18 @@
     <fragment
         android:id="@+id/newEntryFragment"
         android:name="com.example.happinessperspective.newEntry.NewEntryFragment"
-        android:label="New Entry" />
+        android:label="New Entry"
+        tools:layout="@layout/new_entry_fragment">
+        <action
+            android:id="@+id/action_newEntryFragment_to_currentMonthDetailsFragment"
+            app:destination="@id/currentMonthDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/currentMonthDetailsFragment"
+        android:name="com.example.happinessperspective.details.CurrentMonthDetailsFragment"
+        android:label="CurrentMonthDetailsFragment"
+        tools:layout="@layout/current_month_details_fragment"
+        />
 
 </navigation>

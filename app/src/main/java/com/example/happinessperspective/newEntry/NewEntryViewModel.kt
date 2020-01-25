@@ -5,6 +5,8 @@ import android.view.View
 import android.widget.EditText
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.happinessperspective.database.Entry
 import com.example.happinessperspective.database.EntryDao
 import kotlinx.coroutines.*
@@ -13,6 +15,18 @@ class NewEntryViewModel(val dao: EntryDao, application: Application) : AndroidVi
     private var _date: String = ""
     private var _subject: String = ""
     private var _note: String? = null
+
+    private val _navigateToCurrentMonthDetails = MutableLiveData<Boolean>()
+    val navigateToCurrentMonthDetails: LiveData<Boolean>
+        get() = _navigateToCurrentMonthDetails
+
+    fun onSubmitButtonClicked() {
+        _navigateToCurrentMonthDetails.value = true
+    }
+
+    fun onNavigatedCompleted() {
+        _navigateToCurrentMonthDetails.value = false
+    }
 
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)

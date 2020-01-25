@@ -9,13 +9,19 @@
         tools:context=".details.CurrentMonthDetailsFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/entry_list"
+            android:id="@+id/recycler_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listCount="16"
+            tools:listitem="@layout/entry_view_holder"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

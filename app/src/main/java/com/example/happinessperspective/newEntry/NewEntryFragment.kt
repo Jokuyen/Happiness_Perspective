@@ -12,6 +12,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import com.example.happinessperspective.R
 import com.example.happinessperspective.database.EntryDatabase
 
@@ -22,6 +24,7 @@ class NewEntryFragment : Fragment() {
 
     private lateinit var binding: NewEntryFragmentBinding
     private lateinit var viewModel: NewEntryViewModel
+    private lateinit var viewModelFactory: NewEntryViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,19 +32,25 @@ class NewEntryFragment : Fragment() {
     ): View? {
         binding = NewEntryFragmentBinding.inflate(inflater)
 
+        binding.datePickerButton.setOnClickListener {
+            showDatePickerDialog(it)
+        }
+
+        return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
         // Create an instance of the ViewModel Factory
         val application = requireNotNull(this.activity).application
         val dataSource = EntryDatabase.getInstance(application).entryDao
-        val viewModelFactory = NewEntryViewModelFactory(dataSource, application)
+        viewModelFactory = NewEntryViewModelFactory(dataSource, application)
 
         // Get a reference to the ViewModel associated with this fragment
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(NewEntryViewModel::class.java)
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
-
-        binding.datePickerButton.setOnClickListener {
-            showDatePickerDialog(it)
-        }
 
         binding.submitButton.setOnClickListener {
             var subjectString: String = subject_text.text.toString()
@@ -63,10 +72,19 @@ class NewEntryFragment : Fragment() {
                 viewModel.insertEntry()
 
                 // Navigate to the next screen
+                viewModel.onSubmitButtonClicked()
             }
         }
 
-        return binding.root
+        // Navigation Observer
+        viewModel.navigateToCurrentMonthDetails.observe( viewLifecycleOwner,
+            Observer<Boolean> { shouldNavigate ->
+                if (shouldNavigate == true) {
+                    val navController = binding.root.findNavController()
+                    navController.navigate(R.id.action_newEntryFragment_to_currentMonthDetailsFragment)
+                    viewModel.onNavigatedCompleted()
+                }
+            })
     }
 
     private fun showDatePickerDialog(v: View) {

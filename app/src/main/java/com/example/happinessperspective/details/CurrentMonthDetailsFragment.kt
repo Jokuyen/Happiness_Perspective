@@ -21,7 +21,9 @@ class CurrentMonthDetailsFragment : Fragment() {
     ): View? {
         binding = CurrentMonthDetailsFragmentBinding.inflate(inflater)
 
-
+        binding.recyclerView.adapter = RecyclerViewAdapter(RecyclerViewAdapter.OnClickListener {
+            // Navigate to entry's detail screen
+        })
 
         return binding.root
     }
