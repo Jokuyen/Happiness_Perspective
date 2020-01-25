@@ -14,7 +14,6 @@ class NewEntryViewModel(val dao: EntryDao, application: Application) : AndroidVi
     private var _subject: String = ""
     private var _note: String? = null
 
-
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
@@ -45,7 +44,6 @@ class NewEntryViewModel(val dao: EntryDao, application: Application) : AndroidVi
             dao.insert(newEntry)
         }
     }
-
 
     override fun onCleared() {
         super.onCleared()
