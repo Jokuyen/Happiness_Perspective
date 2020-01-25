@@ -1,4 +1,4 @@
-package com.example
+package com.example.happinessperspective
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
