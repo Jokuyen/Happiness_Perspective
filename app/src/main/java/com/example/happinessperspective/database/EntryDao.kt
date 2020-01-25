@@ -23,8 +23,10 @@ interface EntryDao {
     @Query("SELECT * FROM entry_table ORDER BY entryId DESC")
     fun getAllEntries(): LiveData<List<Entry>>
 
-    @Query("SELECT * FROM entry_table WHERE strftime('%m', date) = :month ORDER BY strftime('%d', date) DESC, entryId DESC")
-    fun getEntriesForSelectedMonth(month: String): LiveData<List<Entry>>
+    @Query("SELECT * FROM entry_table " +
+            "WHERE strftime('%m', date) = :month AND strftime('%Y', date) = :year " +
+            "ORDER BY strftime('%d', date) DESC, entryId DESC")
+    fun getEntriesForSelectedMonthAndYear(month: String, year: String): LiveData<List<Entry>>
 
     @Query("SELECT * FROM entry_table ORDER BY entryId DESC LIMIT 1")
     fun getMostRecentEntry(): Entry?
