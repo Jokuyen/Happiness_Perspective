@@ -1,8 +1,11 @@
 package com.example.happinessperspective.database
 
+import android.icu.text.DateFormatSymbols
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 @Entity(tableName = "entry_table")
 data class Entry (
@@ -16,4 +19,11 @@ data class Entry (
     var note: String?,
 
     var favorite: Boolean = false
-)
+) {
+    fun getDateString() : String {
+        val dateObject = LocalDate.parse(date, DateTimeFormatter.ISO_DATE)
+        val monthString = DateFormatSymbols().getMonths()[dateObject.monthValue - 1]
+
+        return monthString + " " + dateObject.dayOfMonth + ", " + dateObject.year
+    }
+}
