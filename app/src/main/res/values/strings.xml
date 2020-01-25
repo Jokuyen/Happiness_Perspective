@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Happiness Perspective</string>
 
-    <string name="fab_label">New Entry</string>
+    <string name="new_entry_fab_label">New Entry</string>
+    <string name="submit_entry_fab_label">Submit</string>
 
     <string name="pick_date">Enter Date</string>
     <string name="subjectHintText">Subject</string>

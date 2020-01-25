@@ -6,14 +6,17 @@ import android.icu.text.DateFormatSymbols
 import android.icu.util.Calendar
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.example.happinessperspective.R
+import com.example.happinessperspective.database.EntryDatabase
 
 import com.example.happinessperspective.databinding.NewEntryFragmentBinding
+import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.new_entry_fragment.*
 
 class NewEntryFragment : Fragment() {
@@ -27,16 +30,33 @@ class NewEntryFragment : Fragment() {
     ): View? {
         binding = NewEntryFragmentBinding.inflate(inflater)
 
+        // Create an instance of the ViewModel Factory
+        val application = requireNotNull(this.activity).application
+        val dataSource = EntryDatabase.getInstance(application).entryDao
+        val viewModelFactory = NewEntryViewModelFactory(dataSource, application)
+
+        // Get a reference to the ViewModel associated with this fragment
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(NewEntryViewModel::class.java)
+
+        binding.setLifecycleOwner(this)
+        binding.viewModel = viewModel
+
         binding.datePickerButton.setOnClickListener {
             showDatePickerDialog(it)
         }
 
-        return binding.root
-    }
+        binding.submitButton.setOnClickListener {
+            var subjectString: String = subject_text.text.toString()
+            subjectString = subjectString.trim()
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(NewEntryViewModel::class.java)
+            if (TextUtils.isEmpty(subjectString)) {
+                subject_text.setError("Subject cannot be empty")
+            } else {
+
+            }
+        }
+
+        return binding.root
     }
 
     private fun showDatePickerDialog(v: View) {
@@ -50,13 +70,21 @@ class NewEntryFragment : Fragment() {
                 val monthString = DateFormatSymbols().getMonths()[inputMonth]
                 date_picker_button.text = monthString + " " + inputDay + ", " + inputYear
 
-                val newBackgroundColor = ContextCompat.getColor(requireContext(), R.color.primaryColor)
-                val newTextColor = ContextCompat.getColor(requireContext(), R.color.primaryTextColor)
+                changeDatePickerButtonColor()
 
-                date_picker_button.setBackgroundTintList(ColorStateList.valueOf(newBackgroundColor))
-                date_picker_button.setTextColor(newTextColor)
+                // Show "Submit" button
+                submit_button.visibility = View.VISIBLE
             }, defaultYear, defaultMonth, defaultDay)
 
         datePicker.show()
+    }
+
+    private fun changeDatePickerButtonColor() {
+        val newBackgroundColor = ContextCompat.getColor(requireContext(), R.color.primaryColor)
+        val newTextColor = ContextCompat.getColor(requireContext(), R.color.primaryTextColor)
+
+        // Update date picker button's color
+        date_picker_button.setBackgroundTintList(ColorStateList.valueOf(newBackgroundColor))
+        date_picker_button.setTextColor(newTextColor)
     }
 }

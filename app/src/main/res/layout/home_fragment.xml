@@ -15,11 +15,11 @@
         tools:context=".home.HomeFragment">
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/newEntryFab"
+            android:id="@+id/new_entry_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="@string/fab_label"
+            android:text="@string/new_entry_fab_label"
             app:icon="@drawable/ic_plus_24px"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
