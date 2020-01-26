@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/currentMonthDetailsFragment"
-        android:name="com.example.happinessperspective.details.CurrentMonthDetailsFragment"
+        android:name="com.example.happinessperspective.currentMonth.CurrentMonthDetailsFragment"
         android:label="Current Month"
         tools:layout="@layout/current_month_details_fragment" />
 

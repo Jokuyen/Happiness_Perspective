@@ -1,4 +1,4 @@
-package com.example.happinessperspective.details
+package com.example.happinessperspective.currentMonth
 
 import android.app.Application
 import android.icu.util.Calendar
@@ -16,7 +16,4 @@ class CurrentMonthDetailsViewModel(val dao: EntryDao, application: Application) 
     val entries : LiveData<List<Entry>>
         get() = _entries
 
-    override fun onCleared() {
-        super.onCleared()
-    }
 }

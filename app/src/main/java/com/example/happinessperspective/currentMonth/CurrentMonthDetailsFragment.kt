@@ -1,4 +1,4 @@
-package com.example.happinessperspective.details
+package com.example.happinessperspective.currentMonth
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -12,8 +12,8 @@ import com.example.happinessperspective.databinding.CurrentMonthDetailsFragmentB
 
 class CurrentMonthDetailsFragment : Fragment() {
 
-    private lateinit var viewModel: CurrentMonthDetailsViewModel
     private lateinit var binding: CurrentMonthDetailsFragmentBinding
+    private lateinit var viewModel: CurrentMonthDetailsViewModel
     private lateinit var viewModelFactory: CurrentMonthDetailsViewModelFactory
 
     override fun onCreateView(
@@ -41,6 +41,7 @@ class CurrentMonthDetailsFragment : Fragment() {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(CurrentMonthDetailsViewModel::class.java)
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
+
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.happinessperspective.details
+package com.example.happinessperspective.currentMonth
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

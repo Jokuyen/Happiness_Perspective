@@ -1,4 +1,4 @@
-package com.example.happinessperspective.details
+package com.example.happinessperspective.currentMonth
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

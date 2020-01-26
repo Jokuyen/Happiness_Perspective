@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.happinessperspective.details.CurrentMonthDetailsViewModel" />
+            type="com.example.happinessperspective.currentMonth.CurrentMonthDetailsViewModel" />
     </data>
 
 
@@ -14,18 +14,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".details.CurrentMonthDetailsFragment">
-
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/barChartView"
-            android:layout_width="0dp"
-            android:layout_height="400dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        tools:context=".currentMonth.CurrentMonthDetailsFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -39,7 +28,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/barChartView"
+            app:layout_constraintTop_toTopOf="parent"
             tools:listCount="16"
             tools:listitem="@layout/entry_view_holder" />
 
