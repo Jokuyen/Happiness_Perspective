@@ -33,7 +33,7 @@
 
     <fragment
         android:id="@+id/progressFragment"
-        android:name="com.example.progress.ProgressFragment"
+        android:name="com.example.happinessperspective.progress.ProgressFragment"
         android:label="Progress"
         tools:layout="@layout/progress_fragment" />
 

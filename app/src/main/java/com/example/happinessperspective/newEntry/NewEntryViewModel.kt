@@ -16,8 +16,15 @@ class NewEntryViewModel(val dao: EntryDao, application: Application) : AndroidVi
     private var _date: String = ""
     private var _subject: String = ""
     private var _note: String? = null
+    private var _year: Int = -1
+    private var _month: Int = -1
+    private var _day: Int = -1
 
     fun setDate(year: Int, month: Int, day: Int) {
+        _year = year
+        _month = month
+        _day = day
+
         val monthString = String.format("%02d", month + 1)
         val dayString = String.format("%02d", day)
 
@@ -51,7 +58,7 @@ class NewEntryViewModel(val dao: EntryDao, application: Application) : AndroidVi
 
     fun insertEntry() {
         uiScope.launch {
-            val newEntry = Entry(date = _date, subject = _subject, note = _note)
+            val newEntry = Entry(date = _date, subject = _subject, note = _note, year = _year, month = _month, day = _day)
             insert(newEntry)
         }
     }

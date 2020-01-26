@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 
 import com.example.happinessperspective.database.EntryDatabase
 import com.example.happinessperspective.databinding.CurrentMonthDetailsFragmentBinding
@@ -24,6 +25,7 @@ class CurrentMonthDetailsFragment : Fragment() {
 
         binding.recyclerView.adapter = RecyclerViewAdapter(RecyclerViewAdapter.OnClickListener {
             // Navigate to entry's detail screen
+            Toast.makeText(context, "I've been tapped!", Toast.LENGTH_SHORT).show()
         })
 
         return binding.root

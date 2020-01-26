@@ -1,4 +1,4 @@
-package com.example.progress
+package com.example.happinessperspective.progress
 
 import android.app.Application
 import android.icu.util.Calendar
@@ -13,9 +13,8 @@ import com.github.mikephil.charting.data.BarEntry
 class ProgressViewModel(val dao: EntryDao, application: Application) : AndroidViewModel(application) {
     val c = Calendar.getInstance()
     val currentYear = c.get(Calendar.YEAR).toString()
-    val currentMonth = String.format("%02d", c.get(Calendar.MONTH) + 1)
 
-    private val _entries = dao.getEntriesForSelectedMonthAndYear(currentMonth, currentYear)
+    private val _entries = dao.getEntriesForSelectedYear(currentYear)
     val entries : LiveData<List<Entry>>
         get() = _entries
 
@@ -25,6 +24,7 @@ class ProgressViewModel(val dao: EntryDao, application: Application) : AndroidVi
 
         // Create BarData object
         var chartEntryList = ArrayList<BarEntry>()
+
         //chartEntryList.add(BarEntry(0f, listSize.toFloat()))
         chartEntryList.add(BarEntry(0f, 10f))
 

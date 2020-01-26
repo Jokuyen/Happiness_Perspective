@@ -18,7 +18,13 @@ data class Entry (
 
     var note: String?,
 
-    var favorite: Boolean = false
+    var favorite: Boolean = false,
+
+    var year: Int,
+
+    var month: Int,
+
+    var day: Int
 ) {
     fun getDateString() : String {
         val dateObject = LocalDate.parse(date, DateTimeFormatter.ISO_DATE)

@@ -1,4 +1,4 @@
-package com.example.progress
+package com.example.happinessperspective.progress
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -33,7 +33,11 @@ class ProgressFragment : Fragment() {
         // Create an instance of the ViewModel Factory
         val application = requireNotNull(this.activity).application
         val dataSource = EntryDatabase.getInstance(application).entryDao
-        viewModelFactory = ProgressViewModelFactory(dataSource, application)
+        viewModelFactory =
+            ProgressViewModelFactory(
+                dataSource,
+                application
+            )
 
         // Get a reference to the ViewModel associated with this fragment
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProgressViewModel::class.java)
