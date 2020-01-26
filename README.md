@@ -13,3 +13,9 @@ Challenges:
 - RecyclerView: Too difficult to implement a second type of ViewHolder
 - MPAndroidChart: Learning to use the library
 - Room: Lack of date format
+
+Lesson:
+I changed my Entry data class to include year: Int, month: Int, and day: Int. I noticed after the change that if I tried to submit a new Entry, the app crashes. I tried to find the bug for an hour until it dawned on me that the database's table with the old Entry version might be interfering with the current version. Therefore, this might be a database bug. My theory was that if I deleted the old database and started fresh, this bug would go away. First, I cleared the data using the clear() method of the Dao. Then, I updated the version of the database. 
+
+And like that, my app stopped crashing! 
+I fear what I would have done instead if I hadn't guessed upon this solution. For anyone working with Room, try changing the version of your database after changing the class of your chosen Entity. Otherwise, you might end up with your app crashing without a direct explanation.
