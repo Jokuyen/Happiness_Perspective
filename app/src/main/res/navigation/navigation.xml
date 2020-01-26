@@ -30,10 +30,11 @@
         android:name="com.example.happinessperspective.currentMonth.CurrentMonthDetailsFragment"
         android:label="Current Month"
         tools:layout="@layout/current_month_details_fragment" />
+
     <fragment
         android:id="@+id/progressFragment"
         android:name="com.example.progress.ProgressFragment"
-        android:label="ProgressFragment"
-        tools:layout="@layout/progress_fragment"/>
+        android:label="Progress"
+        tools:layout="@layout/progress_fragment" />
 
 </navigation>
