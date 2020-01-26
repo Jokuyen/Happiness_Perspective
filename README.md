@@ -14,8 +14,15 @@ Challenges:
 - MPAndroidChart: Learning to use the library
 - Room: Lack of date format
 
-Lesson:
-I changed my Entry data class to include year: Int, month: Int, and day: Int. I noticed after the change that if I tried to submit a new Entry, the app crashes. I tried to find the bug for an hour until it dawned on me that the database's table with the old Entry version might be interfering with the current version. Therefore, this might be a database bug. My theory was that if I deleted the old database and started fresh, this bug would go away. First, I cleared the data using the clear() method of the Dao. Then, I updated the version of the database. 
+Lesson from a mysterious crash:
+I changed my Entry data class to include year: Int, month: Int, and day: Int. 
 
-And like that, my app stopped crashing! 
-I fear what I would have done instead if I hadn't guessed upon this solution. For anyone working with Room, try changing the version of your database after changing the class of your chosen Entity. Otherwise, you might end up with your app crashing without a direct explanation.
+After the change, if I tried to submit a new Entry, the app crashes before reaching the CurrentMonth fragment. For an hour, I tried to figure out what the bug could be. I tried debugging and looking at the Logcat, but that didn't help much. 
+
+Then it dawned on me that the database's table was currently holding the old Entity version, which might somehow interfere with the current version of the Entry class. Therefore, this could be a database bug. 
+
+My theory was that if I deleted the old database and started fresh, this bug would go away. So, I went to clear the data using the clear() method of the Dao. Then, I updated the version of the database. 
+
+And like that, my app stopped crashing! It felt like a magical experience, to be frank.
+
+I fear where my mental health would have ended up had I not guessed upon this solution. For anyone working with Room, make sure to check on your database after changing the class of your chosen Entity. Otherwise, you might end up with your app crashing. (And not understanding what went wrong like I did!)
