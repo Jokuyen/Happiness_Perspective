@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.example.happinessperspective.R
 import com.example.happinessperspective.database.EntryDatabase
 import com.example.happinessperspective.databinding.ProgressFragmentBinding
 import com.github.mikephil.charting.components.XAxis

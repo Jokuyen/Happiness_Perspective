@@ -4,7 +4,6 @@ import android.app.Application
 import android.icu.util.Calendar
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
 import com.example.happinessperspective.database.Entry
 import com.example.happinessperspective.database.EntryDao
 import com.github.mikephil.charting.data.BarData
