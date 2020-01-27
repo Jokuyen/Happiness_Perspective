@@ -27,7 +27,7 @@ This could mean people who tend to complain are training their brains to overloo
 
 ### Notable Bugs
 
-#### Mysterious Crashing (Spoiler: Old Database Version)
+#### Mysterious Crashing (Spoiler Alert: Old Database Version)
 At one point, I added new properties to the Entity class for my database. Because SQLite lacked an actual format for dates, I decided to added individual columns for the year, month, and day.
 
 After the change, I tried to submit a new entry. Without explanation, the app crashed before reaching the CurrentMonth fragment. For an hour, I tried to figure out what the bug could be. I tried debugging and looking at the Logcat, but that didn't help much. I had no lead.
@@ -48,3 +48,11 @@ Very long story short (as in, condensing two full days worth of debugging and he
 To sum it up, it was a map access issue. Before I discovered this bug, I had been using nulls instead of actual Ints to keep count the entries of each month. After changing from monthCount[index] to monthCount.getValue(index), I was no longer being returned an unexpected null.
 
 I'm definitely adding this bug to my Hall of Fame.
+
+### Moments of Accomplishment - This Section is a Work in Progress! Come back later :)
+
+#### Gaining Experience with Material Design
+
+#### Practicing SQL Knowledge
+
+#### Transferring Python Experience to MPAndroidChart
