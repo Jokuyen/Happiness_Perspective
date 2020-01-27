@@ -8,7 +8,7 @@ In late November of 2019, I started "Developing Android Apps with Kotlin"⁠ on 
 
 ### Inspiration for this Project
 
-I recently read "The Happiness Advantage: The Seven Principles That Fuel Success and Performance at Work" by Shawn Achor, a Harvard lecturer who studies the link between happiness and success.  He states that happiness that leads to success, not the other way around. 
+I recently read "The Happiness Advantage: The Seven Principles That Fuel Success and Performance at Work" by Shawn Achor, a Harvard lecturer who studies the link between happiness and success.  He states that happiness leads to success, not the other way around. 
 
 One of the lessons in his book is that our perspectives can be trained. For example, there was a Harvard study that paid 27 people to play Tetris for hours, three days in a row. The results? Participants said days after the study, their minds “literally couldn’t stop dreaming about shapes falling from the sky.” Others “couldn’t stop seeing these shapes everywhere, even in their waking hours.” This condition came to be known as the Tetris Effect by gamers. This study shows that the more people practice looking for patterns, the more it affects their way of viewing reality. As Shawn Achor puts it: “The Tetris Effect isn’t just about video games; it is a metaphor for the way our brains dictate the way we see the world around us.” 
 
