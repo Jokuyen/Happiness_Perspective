@@ -32,7 +32,7 @@ At one point, I added new properties to the Entity class for my database. Becaus
 
 After the change, I tried to submit a new entry. Without explanation, the app crashed before reaching the CurrentMonth fragment. For an hour, I tried to figure out what the bug could be. I tried debugging and looking at the Logcat, but that didn't help much. I had no lead.
 
-Then it occured to me that the current database was currently holding the old Entity version, which might somehow interfere with the current version of the Entry class. Therefore, I concluded that this could be a database bug. 
+Then it occured to me that the current database was holding the old Entity version, which might somehow interfere with the new version of the Entry class. Therefore, I concluded that this could be a database bug. 
 
 My theory was that if I deleted the old database and started a fresh one, the mysterious crashing would stop. So, I went ahead and updated the version of the database from 1 to 2.
 
