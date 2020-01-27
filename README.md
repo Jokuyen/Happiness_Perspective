@@ -21,7 +21,7 @@ This could mean people who tend to complain are training their brains to overloo
 - Floating Action Button Extended
 
 ### Challenges
-- Android Development: The tremendously steep learning curve is no joke!
+- Android Development: Tremendously steep learning curve!
 - RecyclerView: Too difficult to implement a second type of ViewHolder
 - MPAndroidChart: Learning to use the library
 - Room: Lack of date format
@@ -29,11 +29,11 @@ This could mean people who tend to complain are training their brains to overloo
 ### Notable Bugs
 
 #### Mysterious Crashing (Spoiler Alert: Old Database Version)
-At one point, I added new properties to the Entity class for my database. Because SQLite lacked an actual format for dates, I decided to added individual columns for the year, month, and day.
+Because SQLite lacked an actual format for dates, I was using a string to hold dates. Then, I had to retrieve entries from the database and realized I would have to parse the string to manually extract the year, month, and day. So, I decided to add the year, month, and day as an Integer type to my Entity class.
 
 After the change, I tried to submit a new entry. Without explanation, the app crashed before reaching the CurrentMonth fragment. For an hour, I tried to figure out what the bug could be. I tried debugging and looking at the Logcat, but that didn't help much. I had no lead.
 
-Then it occured to me that the current database was holding the old Entity version, which might somehow interfere with the new version of the Entry class. Therefore, I concluded that this could be a database bug. 
+Then it occured to me (out of nowhere, I should say) that the current database was working with the old Entity version, which might mean it would have an issue with inserting the new version of the Entity. Therefore, I concluded that this could be a database bug. 
 
 My theory was that if I deleted the old database and started a fresh one, the mysterious crashing would stop. So, I went ahead and updated the version of the database from 1 to 2.
 
