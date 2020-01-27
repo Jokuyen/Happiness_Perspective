@@ -26,6 +26,7 @@ data class Entry (
 
     var day: Int
 ) {
+    // Formatting for Entry ViewHolder (MMM DD, YYYY)
     fun getDateString() : String {
         val dateObject = LocalDate.parse(date, DateTimeFormatter.ISO_DATE)
         val monthString = DateFormatSymbols().getMonths()[dateObject.monthValue - 1]

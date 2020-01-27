@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.Observer
 
 import com.example.happinessperspective.database.EntryDatabase
 import com.example.happinessperspective.databinding.ProgressFragmentBinding
@@ -43,9 +45,15 @@ class ProgressFragment : Fragment() {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProgressViewModel::class.java)
         binding.setLifecycleOwner(this)
 
-        // Set up chart
+        viewModel.entries.observe(viewLifecycleOwner, Observer {
+            barChartView.data = viewModel.getBarChartData()
+            barChartView.invalidate() // Refresh the chart
+        })
+
+        // Format x-axis
         barChartView.xAxis.valueFormatter = chartXAxisFormatter()
         barChartView.xAxis.setPosition(XAxis.XAxisPosition.BOTTOM)
+
         barChartView.getDescription().setEnabled(false)
         barChartView.getLegend().setEnabled(false)
 
@@ -53,15 +61,6 @@ class ProgressFragment : Fragment() {
         barChartView.xAxis.setDrawGridLines(false)
         barChartView.getAxisLeft().setEnabled(false)
         barChartView.getAxisRight().setEnabled(false)
-
-        // Disable touch interaction
-        barChartView.setDragEnabled(false)
-        barChartView.setPinchZoom(false)
-        barChartView.setDoubleTapToZoomEnabled(false)
-        barChartView.setHorizontalScrollBarEnabled(false)
-
-        barChartView.data = viewModel.getBarChartData()
-        barChartView.invalidate() // refresh the chart
     }
 
 }

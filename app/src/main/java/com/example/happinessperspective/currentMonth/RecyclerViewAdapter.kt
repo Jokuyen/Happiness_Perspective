@@ -10,6 +10,13 @@ import com.example.happinessperspective.databinding.EntryViewHolderBinding
 
 class RecyclerViewAdapter(private val onClickListener: OnClickListener) : ListAdapter<Entry, RecyclerViewAdapter.EntryViewHolder>(DiffCallback) {
 
+    class EntryViewHolder(private var binding: EntryViewHolderBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(entry: Entry) {
+            binding.entry = entry
+            binding.executePendingBindings()
+        }
+    }
+
     companion object DiffCallback : DiffUtil.ItemCallback<Entry>() {
         override fun areItemsTheSame(oldItem: Entry, newItem: Entry): Boolean {
             return oldItem === newItem
@@ -17,13 +24,6 @@ class RecyclerViewAdapter(private val onClickListener: OnClickListener) : ListAd
 
         override fun areContentsTheSame(oldItem: Entry, newItem: Entry): Boolean {
             return oldItem.entryId == newItem.entryId
-        }
-    }
-
-    class EntryViewHolder(private var binding: EntryViewHolderBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(entry: Entry) {
-            binding.entry = entry
-            binding.executePendingBindings()
         }
     }
 

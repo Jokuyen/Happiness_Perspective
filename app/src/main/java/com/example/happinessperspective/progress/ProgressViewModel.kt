@@ -14,19 +14,29 @@ class ProgressViewModel(val dao: EntryDao, application: Application) : AndroidVi
     val c = Calendar.getInstance()
     val currentYear = c.get(Calendar.YEAR).toString()
 
-    private val _entries = dao.getEntriesForSelectedYear(currentYear)
-    val entries : LiveData<List<Entry>>
+    //private var _entries = MutableLiveData<List<Entry?>>()
+    val _entries = dao.getEntriesForSelectedYear(currentYear)
+    val entries: LiveData<List<Entry>>
         get() = _entries
 
     fun getBarChartData() : BarData {
-        // Get count of entries from list result of SelectedMonthAndYear
-        var listSize: Int = entries.value?.size ?: 0
-
         // Create BarData object
         var chartEntryList = ArrayList<BarEntry>()
 
-        //chartEntryList.add(BarEntry(0f, listSize.toFloat()))
-        chartEntryList.add(BarEntry(0f, 10f))
+        // Count entries for each month
+        val monthCount = mutableMapOf<Int, Int>().withDefault { 0 }
+
+        _entries.value?.let {
+            for (entry in it) {
+                var count = monthCount.getValue(entry.month)
+                count++
+                monthCount[entry.month] = count
+            }
+        }
+
+        for ((k, v) in monthCount) {
+            chartEntryList.add(BarEntry(k.toFloat(), v.toFloat()))
+        }
 
         val set = BarDataSet(chartEntryList, "Entries")
         set.setValueTextSize(24f)

@@ -11,7 +11,6 @@ class chartXAxisFormatter() : ValueFormatter() {
         "October", "November", "December")
 
     override fun getAxisLabel(value: Float, axis: AxisBase?): String {
-
         return months.getOrNull(value.toInt()) ?: value.toString()
     }
 }
