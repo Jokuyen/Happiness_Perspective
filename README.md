@@ -14,6 +14,15 @@ Challenges:
 - MPAndroidChart: Learning to use the library
 - Room: Lack of date format
 
+Lesson from mutableMapOf<Int, Int>().withDefault { 0 }:
+In the ProgressFragment, I was trying to display the chart of each month's entry count. However, the chart kept stating that it had no data to show. That led me to think there was an issue with the database access in terms of asynchronous queries (meaning that the chart was using the \_entries data before the program was done retrieving from the database). 
+
+Very long story short (as in condensing 2 full days worth of debugging and headaches into this paragraph), it turns out that the database access was fine. It was just the map I was using to keep track of each entry per month. I had used "val monthCount = mutableMapOf<Int, Int>().withDefault { 0 }" with the idea that if I were to retrieve a value from a key that hasn't been used yet, I would get 0. However, after focusing my debugging on the map, I learned that wasn't the case. When I directly accessed the map with indexing (monthCount[index]), I would get a null! Only God knows how equally relieved and irked I became. After researching Kotlin's mutableMapOf data structure on Google, I saw that someone else had spotted the problem. The solution was to not access the map with indexing but with a function (monthCount.getValue). That way, if the value was null, the function would return the default of 0 now. 
+
+To sum it up, it was a map access issue. After changing from monthCount[index] to monthCount.getValue(index), I was no longer being returned an unexpected null.
+
+I'm definitely adding this bug to my "Hall of Infamous Trivial Bugs." Fortunately for me, it's rare that this hall gets a new addition to its collection.
+
 Lesson from a mysterious crash:
 I changed my Entry data class to include year: Int, month: Int, and day: Int. 
 
