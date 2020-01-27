@@ -1,7 +1,16 @@
-About Me:
-In late November of 2019, I started "Developing Android Apps with Kotlin"⁠ on Udacity; it's a 2-month-long course developed by Google itself. Fast forward 2 months later, I've had completed the course and published a personal project in the Google Play Store. My desire to work out my Android development muscles is still strong, so that brings us here!
+NOTE TO ANYONE VISITING THIS SITE: I started this project on January 23, 2020. Therefore, this is still a work on progress. Thank you for coming by!
 
-There's this book called "The Happiness Advantage" by Shawn Achor; it states that happiness results in success, not vice versa. One lesson  I found interesting is that our perspectives can be trained. For example, hardcore Tetris players will begin to search for shapes in the real world after hours of playing. This could mean that people who tend to complain a lot are training their brains to look for the bad. An excellent example would be a software developer searching for bugs in a program, which could lead to looking for problems in the real world, like in relationships, friendships, everything. This means software developers are more prone to finding problems first instead of what's actually working. Therefore, I was inspiried to make this app in order to practice gratitude; the more you look for the good, the more positive the mind becomes.
+Quick Background on my Android Development Journey:
+
+In late November of 2019, I started "Developing Android Apps with Kotlin"⁠ on Udacity; it's a two-month-long course developed by Google itself. Two appropriate months later, I had finished the course and have published a personal project (Recipe Searcher) in the Google Play Store. My desire to work out my Android development muscles is still strong, so that brings us to next project!
+
+Inspiration for this Project:
+
+I recently read "The Happiness Advantage: The Seven Principles That Fuel Success and Performance at Work" by Shawn Achor, a Harvard lecturer who studies the link between happiness and success.  He states that it is happiness that leads to success, not vice versa. One of the book’s lessons is that our perspectives can be trained. 
+
+The book provides an example of a Harvard study that paid 27 people to play Tetris for hours, three days in a row. The results? Participants said days after the study, their minds “literally couldn’t stop dreaming about shapes falling from the sky.” Others “couldn’t stop seeing these shapes everywhere, even in their waking hours.” This condition came to be known as the Tetris Effect by gamers. This study shows that the more people practice looking for patterns, the more it affects their way of viewing reality. As Shawn Achor puts it: “The Tetris Effect isn’t just about video games; it is a metaphor for the way our brains dictate the way we see the world around us.” 
+
+This could mean people who tend to complain are training their brains to overlook the positives for the negatives. An excellent real-life scenario would be a software developer searching for bugs in a program, which could lead to training their brain to look for problems in everything else, like in relationships, friendships, etc. Because of this book, I was inspired to make this app in order to practice gratitude more often. Because the more positive the mind becomes, the more good you’ll see in the world!
 
 Features:
 - Room (implements SQLite)
