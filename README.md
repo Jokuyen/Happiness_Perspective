@@ -4,7 +4,7 @@ I started this project on January 23, 2020. Therefore, this is still a work on p
 
 ### My Android Development Journey
 
-In late November of 2019, I started "Developing Android Apps with Kotlin"⁠ on Udacity; it's a two-month-long course developed by Google itself. Two appropriate months later, I had finished the course and have published a personal project (Recipe Searcher) in the Google Play Store. I want to keep growing my Android Development muscles, so that brings us to this next project!
+In late November of 2019, I started "Developing Android Apps with Kotlin"⁠ on Udacity; it's a two-month-long course developed by Google itself. Two appropriate months later, I had finished the course and have published a personal project (Recipe Searcher) in the Google Play Store. Now that I've had a taste of the experience, I want to continue growing my Android Development muscles. So, that brings us to this next project!
 
 ### Inspiration for this Project
 
