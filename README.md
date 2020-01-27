@@ -12,7 +12,7 @@ I recently read "The Happiness Advantage: The Seven Principles That Fuel Success
 
 One of the lessons in his book is that our perspectives can be trained. For example, there was a Harvard study that paid 27 people to play Tetris for hours, three days in a row. The results? Days after the study, the participants said their minds “literally couldn’t stop dreaming about shapes falling from the sky.” Other participants “couldn’t stop seeing these shapes everywhere, even in their waking hours.” This odd condition came to be known as the Tetris Effect. This study shows that the more people practice looking for patterns, the more it affects their way of viewing reality. As Shawn Achor puts it: “The Tetris Effect isn’t just about video games; it is a metaphor for the way our brains dictate the way we see the world around us.” 
 
-This could mean people who tend to complain are training their brains to overlook more of the positives for the negatives; there's the saying that the more you practice something, the easier it becomes. An excellent real-life scenario would be a software developer searching for bugs in a program, which could lead to training their brain to look for problems in everything else, like in relationships, friendships, themself, etc. Because of this book, I was inspired to create this app in order to practice gratitude more often (and to flex the Android Development muscles, of course). I wouldn't be surprised if there are already a bunch of similar apps on the market, but the least I could do is bring more awareness to the importance of gratitude. The main takeaway I want you to realize is that the more positive the mind becomes, the more good you’ll notice in the world!
+This could mean people who tend to complain are training their brains to overlook more of the positives for the negatives; there's a saying that the more you practice something, the easier it becomes. An excellent real-life scenario would be a software developer searching for bugs in a program, which could lead to training their brain to look for problems in everything else, like in relationships, friendships, themself, etc. Because of this book, I was inspired to create this app in order to practice gratitude more often (and to flex the Android Development muscles, of course). I wouldn't be surprised if there are already a bunch of similar apps on the market, but the least I could do is bring more awareness to the importance of gratitude. The main takeaway I want you to realize is that the more positive the mind becomes, the more good you’ll notice in the world!
 
 ### Features
 - Room (implements SQLite)
@@ -21,6 +21,7 @@ This could mean people who tend to complain are training their brains to overloo
 - Floating Action Button Extended
 
 ### Challenges
+- Android Development: The tremendously steep learning curve is no joke!
 - RecyclerView: Too difficult to implement a second type of ViewHolder
 - MPAndroidChart: Learning to use the library
 - Room: Lack of date format
