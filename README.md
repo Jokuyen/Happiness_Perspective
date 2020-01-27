@@ -1,4 +1,4 @@
-### Note to Website Visitors
+## Note to Website Visitors
 
 I started this project on January 23, 2020. Therefore, this is still a work on progress. Thank you for coming by!
 
@@ -27,7 +27,7 @@ This could mean people who tend to complain are training their brains to overloo
 
 ### Notable Bugs
 
-## Mysterious Crashing (Spoiler: Old Database Version)
+#### Mysterious Crashing (Spoiler: Old Database Version)
 At one point, I added new properties to the Entity class for my database. Because SQLite lacked an actual format for dates, I decided to added individual columns for the year, month, and day.
 
 After the change, I tried to submit a new entry. Without explanation, the app crashed before reaching the CurrentMonth fragment. For an hour, I tried to figure out what the bug could be. I tried debugging and looking at the Logcat, but that didn't help much. I had no lead.
@@ -40,7 +40,7 @@ And like that, my app stopped crashing! Words truly cannot express how magical o
 
 I fear where my mental health would have ended up had I not guessed upon this solution. For other newbies working with Room, make sure to check on your database after changing the properties of an Entity. Otherwise, you might end up with your app crashing. (And not initially understanding what went wrong like I had!)
 
-## mutableMapOf<Int, Int>().withDefault{0}
+#### mutableMapOf<Int, Int>().withDefault{0}
 In ProgressFragment, I wanted to display the chart with each month's entry count. However, it kept coming up with an empty chart. That led me to think there was an issue with the database access in terms of asynchronous queries (meaning that the chart was retrieving from  an empty variable before the app was done accessing the database). 
 
 Very long story short (as in, condensing two full days worth of debugging and headaches into a few paragraphs), it turns out that the database access was fine. It was just the map I was using to keep track of each entry per month. I had used "val monthCount = mutableMapOf<Int, Int>().withDefault { 0 }" with the idea that if I were to retrieve a value from a key that hadn't been used yet, I would get 0. However, after eventually focusing my debugging on the map, I learned that wasn't actually the case. When I directly accessed the map with indexing (monthCount[index]), I would get a null! Only God knows how equally relieved and irked I became because of such a trivial bug. After doing some research on Kotlin's mutableMapOf on Google, I saw that someone else had noticed the same thing with this data structure. The provided solution I found was not to access the map with indexing but instead with a function (monthCount.getValue()). That way, if the value was null, the function would return the expected default of 0. 
