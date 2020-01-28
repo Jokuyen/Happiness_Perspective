@@ -44,15 +44,21 @@ class ProgressFragment : Fragment() {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProgressViewModel::class.java)
         binding.setLifecycleOwner(this)
 
+        // Set up chart
         viewModel.entries.observe(viewLifecycleOwner, Observer {
             barChartView.data = viewModel.getBarChartData()
+            barChartView.setVisibleXRangeMaximum(4f)
             barChartView.invalidate() // Refresh the chart
         })
 
         // Format x-axis
-        barChartView.xAxis.valueFormatter = chartXAxisFormatter()
-        barChartView.xAxis.setPosition(XAxis.XAxisPosition.BOTTOM)
+        val xAxis = barChartView.xAxis
+        xAxis.valueFormatter = chartXAxisFormatter()
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM)
+        xAxis.setLabelCount(4)
+        xAxis.setTextSize(18f)
 
+        // Remove unnecessary labels
         barChartView.getDescription().setEnabled(false)
         barChartView.getLegend().setEnabled(false)
 
@@ -60,6 +66,13 @@ class ProgressFragment : Fragment() {
         barChartView.xAxis.setDrawGridLines(false)
         barChartView.getAxisLeft().setEnabled(false)
         barChartView.getAxisRight().setEnabled(false)
+
+        // Remove gap between bars and labels
+        barChartView.axisLeft.axisMinimum = 0f
+        barChartView.axisRight.axisMinimum = 0f
+
+        // Prevents bottom of x-axis labels from cutting off
+        //barChartView.setExtraOffsets(-40f, 10f, -40f, 10f);
     }
 
 }
