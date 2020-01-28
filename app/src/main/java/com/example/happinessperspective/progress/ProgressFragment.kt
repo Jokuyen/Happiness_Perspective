@@ -72,7 +72,7 @@ class ProgressFragment : Fragment() {
         barChartView.axisRight.axisMinimum = 0f
 
         // Prevents bottom of x-axis labels from cutting off
-        //barChartView.setExtraOffsets(-40f, 10f, -40f, 10f);
+        barChartView.setExtraOffsets(-40f, 10f, -40f, 10f);
     }
 
 }
