@@ -55,12 +55,16 @@ class ProgressFragment : Fragment() {
     }
 
     private fun barChartFormatting() {
-        // Format x-axis
+        // X-axis formatting
         val xAxis = barChartView.xAxis
         xAxis.valueFormatter = ChartXAxisFormatter()
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM)
         xAxis.setLabelCount(4)
         xAxis.setTextSize(18f)
+
+        // Y-axis formatting
+        val yAxis = barChartView.axisLeft
+        yAxis.setTextSize(18f)
 
         // Remove unnecessary labels
         barChartView.getDescription().setEnabled(false)
@@ -68,7 +72,6 @@ class ProgressFragment : Fragment() {
 
         // Remove grid lines
         barChartView.xAxis.setDrawGridLines(false)
-        barChartView.getAxisLeft().setEnabled(false)
         barChartView.getAxisRight().setEnabled(false)
 
         // Remove gap between bars and labels
