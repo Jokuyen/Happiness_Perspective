@@ -24,18 +24,16 @@ class ProgressViewModel(val dao: EntryDao, application: Application) : AndroidVi
         var chartEntryList = ArrayList<BarEntry>()
 
         // Count entries for each month
-        val monthCount = mutableMapOf<Int, Int>().withDefault { 0 }
+        val monthEntryCount = IntArray(12)
 
         _entries.value?.let {
             for (entry in it) {
-                var count = monthCount.getValue(entry.month)
-                count++
-                monthCount[entry.month] = count
+                monthEntryCount[entry.month]++ // Index of 0 is equivalent to January
             }
         }
 
-        for ((k, v) in monthCount) {
-            chartEntryList.add(BarEntry(k.toFloat(), v.toFloat()))
+        for (i in 0..11) {
+            chartEntryList.add(BarEntry(i.toFloat(), monthEntryCount[i].toFloat()))
         }
 
         val set = BarDataSet(chartEntryList, "Entries")
