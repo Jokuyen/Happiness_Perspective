@@ -50,9 +50,9 @@ In ProgressFragment, I wanted to display the chart with each month's entry count
 
 Very long story short (Translation: Condensing two full days worth of debugging and headaches into a few paragraphs), it turns out that the database access was fine. The issue was the map data structure I used to keep track of each entry per month. I had used "val monthCount = mutableMapOf<Int, Int>().withDefault { 0 }" with the idea that if I were to retrieve a value with a key that hadn't been used yet, I would get 0 and increment it to 1. However, after eventually focusing my debugging on the map data structure, I learned that wasn't actually the case. When I directly accessed the map with indexing (monthCount[index]), I would get a null! Only God knows how equally relieved and irked I became because of such a trivial bug. After doing some research on Kotlin's mutableMapOf on Google, I saw that someone else had noticed the same thing with this data structure. I mean, you would think that if you initialized a map with a default value, you shouldn't be getting a null. But that's exactly what was happening. The provided solution I found was not to access the map with indexing but instead with a function (monthCount.getValue()). That way, if the value was null, the function would return the expected default of 0. 
 
-To sum it up, it was a map access issue. Before I discovered this bug, I had been using nulls instead of actual Ints to keep count the entries of each month. After changing from monthCount[index] to monthCount.getValue(index), I was no longer being returned an unexpected null.
+To sum it up, it was a map access issue. Before I discovered this bug, I had been using nulls instead of actual Ints to keep count the entries of each month. After changing from monthCount[index] to monthCount.getValue(index), I was no longer being returned an unexpected null. 
 
-I'm definitely adding this bug to my Hall of Fame.
+I'm definitely adding this sneaky bug to my Hall of Fame.
 
 ### Moments of Accomplishment - This Section is a Work in Progress! Come back later :)
 
