@@ -51,9 +51,13 @@ class ProgressFragment : Fragment() {
             barChartView.invalidate() // Refresh the chart
         })
 
+        barChartFormatting()
+    }
+
+    private fun barChartFormatting() {
         // Format x-axis
         val xAxis = barChartView.xAxis
-        xAxis.valueFormatter = chartXAxisFormatter()
+        xAxis.valueFormatter = ChartXAxisFormatter()
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM)
         xAxis.setLabelCount(4)
         xAxis.setTextSize(18f)
@@ -71,8 +75,7 @@ class ProgressFragment : Fragment() {
         barChartView.axisLeft.axisMinimum = 0f
         barChartView.axisRight.axisMinimum = 0f
 
-        // Prevents bottom of x-axis labels from cutting off
-        barChartView.setExtraOffsets(-40f, 10f, -40f, 10f);
+        // Prevent bottom of x-axis labels from cutting off
+        barChartView.setExtraOffsets(0f, 10f, 0f, 10f);
     }
-
 }
