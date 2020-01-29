@@ -55,7 +55,7 @@ To sum it up, it was a map access issue. Before I discovered this bug, I had bee
 
 I'm definitely adding this sneaky bug to my Hall of Fame.
 
-Afternote: I realized I could have just used an array of size 12 to track the months instead of using a map. Nonetheless, this was a good learning experience!
+Afternote: I realized a simpler solution would be using an Int array of size=12 to track the months instead of a map. Nonetheless, this was a good learning experience in spite of the total frustration!
 
 ### Moments of Accomplishment - This Section is a Work in Progress! Come back later :)
 
