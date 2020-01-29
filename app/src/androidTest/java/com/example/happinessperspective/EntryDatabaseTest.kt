@@ -1,8 +1,6 @@
 package com.example.happinessperspective
 
 import android.icu.util.Calendar
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -17,7 +15,7 @@ import org.junit.runner.RunWith
 import java.io.IOException
 
 @RunWith(AndroidJUnit4::class)
-class EntryDatabaseTest {
+class EntryDatabaseTest: HelperFunction {
 
     private lateinit var dao: EntryDao
     private lateinit var db: EntryDatabase
@@ -52,7 +50,7 @@ class EntryDatabaseTest {
 
     @Test
     @Throws(Exception::class)
-    fun insertAndGetEntry() {
+    fun insertAndGetEntry_ShouldReturnMostRecentEntry() {
         val entry = Entry(date = dateString, subject = "Test Subject", note = null, year = currentYear, month = currentMonth, day = currentDay)
         dao.insert(entry)
         val result = dao.getMostRecentEntry()
@@ -62,7 +60,7 @@ class EntryDatabaseTest {
 
     @Test
     @Throws(Exception::class)
-    fun getEntriesForSelectedYear_ShouldReturnEntries() {
+    fun getEntriesForSelectedYear_ShouldReturnEntriesStartingWithMostRecent() {
         val entry1 = Entry(date = dateString, subject = "Test Subject 1", note = null, year = currentYear, month = currentMonth, day = currentDay)
         val entry2 = Entry(date = dateString, subject = "Test Subject 2", note = null, year = currentYear, month = currentMonth, day = currentDay)
         val entry3 = Entry(date = dateString, subject = "Test Subject 3", note = null, year = currentYear, month = currentMonth, day = currentDay)
@@ -75,12 +73,13 @@ class EntryDatabaseTest {
         dao.insert(entry4)
         dao.insert(entry5)
 
-        val _results = MutableLiveData<List<Entry>>()
-        val results: LiveData<List<Entry>> = _results
+        val results = dao.getEntriesForSelectedYear(currentYear.toString())
 
-        //_results.value = dao.getEntriesForSelectedYear(currentYear.toString())
-
-        // The first value of the list should be most recent entry, which would be entry5
-        assertEquals(_results.value!![0].entryId, 5)
+        // First value of the list should be most recent entry, which would be entry5
+        assertEquals(5, results.getOrAwaitValue()[0].entryId)
+        assertEquals(4, results.getOrAwaitValue()[1].entryId)
+        assertEquals(3, results.getOrAwaitValue()[2].entryId)
+        assertEquals(2, results.getOrAwaitValue()[3].entryId)
+        assertEquals(1, results.getOrAwaitValue()[4].entryId)
     }
 }
