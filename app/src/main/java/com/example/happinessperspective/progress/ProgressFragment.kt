@@ -80,5 +80,9 @@ class ProgressFragment : Fragment() {
 
         // Prevent bottom of x-axis labels from cutting off
         barChartView.setExtraOffsets(0f, 10f, 0f, 10f);
+
+        // Touch interactions
+        barChartView.isDoubleTapToZoomEnabled = false
+        barChartView.setScaleEnabled(false)
     }
 }
