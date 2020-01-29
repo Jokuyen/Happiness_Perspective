@@ -29,7 +29,9 @@ interface EntryDao {
             "ORDER BY strftime('%d', date) DESC, entryId DESC")
     fun getEntriesForSelectedMonthAndYear(month: String, year: String): LiveData<List<Entry>>
 
-    @Query("SELECT * FROM entry_table WHERE strftime('%Y', date) = :year ORDER BY strftime('%m', date) DESC, strftime('%d', date) DESC, entryId DESC")
+    @Query("SELECT * FROM entry_table " +
+            "WHERE strftime('%Y', date) = :year " +
+            "ORDER BY strftime('%m', date) DESC, strftime('%d', date) DESC, entryId DESC")
     fun getEntriesForSelectedYear(year: String): LiveData<List<Entry>>
 
     @Query("SELECT * FROM entry_table ORDER BY entryId DESC LIMIT 1")
