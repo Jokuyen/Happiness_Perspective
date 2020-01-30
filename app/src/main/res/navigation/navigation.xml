@@ -42,7 +42,7 @@
         tools:layout="@layout/progress_fragment" />
     <fragment
         android:id="@+id/entryDetails"
-        android:name="com.example.happinessperspective.entryDetails.EntryDetails"
+        android:name="com.example.happinessperspective.entryDetails.EntryDetailsFragment"
         android:label="Details"
         tools:layout="@layout/entry_details_fragment" >
         <argument android:name="selectedEntry"

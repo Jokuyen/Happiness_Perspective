@@ -25,10 +25,8 @@ class CurrentMonthDetailsFragment : Fragment() {
 
         binding.recyclerView.adapter = RecyclerViewAdapter(RecyclerViewAdapter.OnClickListener {
             // Navigate to entry's detail screen
-            if (it != null) {
-                this.findNavController().navigate(
-                    CurrentMonthDetailsFragmentDirections.actionCurrentMonthDetailsFragmentToEntryDetails(it))
-            }
+            this.findNavController().navigate(
+                CurrentMonthDetailsFragmentDirections.actionCurrentMonthDetailsFragmentToEntryDetails(it))
         })
 
         return binding.root

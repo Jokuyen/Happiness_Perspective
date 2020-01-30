@@ -10,4 +10,8 @@ class EntryDetailsViewModel(entry: Entry, app: Application) : AndroidViewModel(a
     private val _selectedEntry = MutableLiveData<Entry>()
     val selectedEntry: LiveData<Entry>
         get() = _selectedEntry
+
+    init {
+        _selectedEntry.value = entry
+    }
 }
