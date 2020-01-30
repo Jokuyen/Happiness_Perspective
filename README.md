@@ -22,13 +22,14 @@ This could mean people who tend to complain are training their brains to overloo
 - Room (implements SQLite)
 - MPAndroidChart
 - RecyclerView
-- Floating Action Button Extended
+- Material Design
 
 ### Challenges
 - Android Development: Tremendously steep learning curve!
 - RecyclerView: Too difficult to implement a second type of ViewHolder
 - MPAndroidChart: Learning to use the library
 - Room: Lack of date format
+- Unit Testing: LiveData
 
 ### Notable Bugs
 
@@ -54,12 +55,12 @@ To sum it up, it was a map access issue. Before I discovered this bug, I had bee
 
 I'm definitely adding this sneaky bug to my Hall of Fame.
 
-### Moments of Accomplishment - This Section is a Work in Progress! Come back later :)
+Afternote: I realized a simpler solution would be using an Int array of size=12 to track the months instead of a map. Nonetheless, this was a good learning experience in spite of the total frustration!
 
-#### Gaining Experience with Material Design
+### Moments of Accomplishment - This Section is a Work in Progress! Come back later :)
 
 #### Practicing SQL Knowledge
 
-#### Transferring Python Experience to MPAndroidChart
+#### Transferring Previous Experience to MPAndroidChart
 
 #### Tried Unit Testing
