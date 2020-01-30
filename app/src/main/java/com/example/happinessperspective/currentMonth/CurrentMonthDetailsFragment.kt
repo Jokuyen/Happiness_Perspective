@@ -1,11 +1,11 @@
 package com.example.happinessperspective.currentMonth
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 
 import com.example.happinessperspective.database.EntryDatabase
@@ -41,7 +41,7 @@ class CurrentMonthDetailsFragment : Fragment() {
         viewModelFactory = CurrentMonthDetailsViewModelFactory(dataSource, application)
 
         // Get a reference to the ViewModel associated with this fragment
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(CurrentMonthDetailsViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(CurrentMonthDetailsViewModel::class.java)
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
 

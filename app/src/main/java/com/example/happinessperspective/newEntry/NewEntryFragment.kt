@@ -4,7 +4,6 @@ import android.app.DatePickerDialog
 import android.content.res.ColorStateList
 import android.icu.text.DateFormatSymbols
 import android.icu.util.Calendar
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -13,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.happinessperspective.R
 import com.example.happinessperspective.database.EntryDatabase
@@ -48,7 +48,7 @@ class NewEntryFragment : Fragment() {
         viewModelFactory = NewEntryViewModelFactory(dataSource, application)
 
         // Get a reference to the ViewModel associated with this fragment
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(NewEntryViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(NewEntryViewModel::class.java)
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
 

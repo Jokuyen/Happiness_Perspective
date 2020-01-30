@@ -1,12 +1,12 @@
 package com.example.happinessperspective.progress
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 
 import com.example.happinessperspective.database.EntryDatabase
 import com.example.happinessperspective.databinding.ProgressFragmentBinding
@@ -41,7 +41,7 @@ class ProgressFragment : Fragment() {
             )
 
         // Get a reference to the ViewModel associated with this fragment
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ProgressViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(ProgressViewModel::class.java)
         binding.setLifecycleOwner(this)
 
         // Set up chart

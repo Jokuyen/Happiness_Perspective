@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 
 import com.example.happinessperspective.R
@@ -31,7 +31,7 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         // Create and bind view model
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         binding.viewModel = viewModel
 
         // Navigation Observer
