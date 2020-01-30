@@ -6,4 +6,9 @@
         android:icon="@drawable/ic_bar_chart_24px"
         android:title="Progress" />
 
+    <item
+        android:id="@+id/currentMonthDetailsFragment"
+        android:icon="@drawable/ic_view_agenda_24px"
+        android:title="Current Month" />
+
 </menu>

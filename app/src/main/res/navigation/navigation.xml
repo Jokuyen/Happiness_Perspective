@@ -32,7 +32,7 @@
         tools:layout="@layout/current_month_details_fragment" >
         <action
             android:id="@+id/action_currentMonthDetailsFragment_to_entryDetails"
-            app:destination="@id/entryDetails" />
+            app:destination="@id/entryDetailsFragment" />
     </fragment>
 
     <fragment
@@ -41,7 +41,7 @@
         android:label="Progress"
         tools:layout="@layout/progress_fragment" />
     <fragment
-        android:id="@+id/entryDetails"
+        android:id="@+id/entryDetailsFragment"
         android:name="com.example.happinessperspective.entryDetails.EntryDetailsFragment"
         android:label="Details"
         tools:layout="@layout/entry_details_fragment" >
