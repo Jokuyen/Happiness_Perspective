@@ -14,3 +14,9 @@ class ChartXAxisFormatter() : ValueFormatter() {
         return months.getOrNull(value.toInt()) ?: value.toString()
     }
 }
+
+class FloatToIntFormatter() : ValueFormatter() {
+    override fun getFormattedValue(value: Float): String {
+        return value.toInt().toString()
+    }
+}

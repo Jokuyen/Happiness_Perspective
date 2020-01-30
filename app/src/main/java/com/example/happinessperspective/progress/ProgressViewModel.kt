@@ -37,7 +37,10 @@ class ProgressViewModel(val dao: EntryDao, application: Application) : AndroidVi
         }
 
         val set = BarDataSet(chartEntryList, "Entries")
-        set.setDrawValues(false)
+
+        // Display int instead of float value
+        set.setValueFormatter(FloatToIntFormatter())
+        set.setValueTextSize(18f)
 
         return BarData(set)
     }
