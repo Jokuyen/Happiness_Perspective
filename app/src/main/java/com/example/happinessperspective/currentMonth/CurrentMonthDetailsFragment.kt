@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 
 import com.example.happinessperspective.database.EntryDatabase
 import com.example.happinessperspective.databinding.CurrentMonthDetailsFragmentBinding
@@ -24,7 +25,10 @@ class CurrentMonthDetailsFragment : Fragment() {
 
         binding.recyclerView.adapter = RecyclerViewAdapter(RecyclerViewAdapter.OnClickListener {
             // Navigate to entry's detail screen
-
+            if (it != null) {
+                this.findNavController().navigate(
+                    CurrentMonthDetailsFragmentDirections.actionCurrentMonthDetailsFragmentToEntryDetails(it))
+            }
         })
 
         return binding.root

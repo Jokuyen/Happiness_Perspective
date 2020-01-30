@@ -29,12 +29,24 @@
         android:id="@+id/currentMonthDetailsFragment"
         android:name="com.example.happinessperspective.currentMonth.CurrentMonthDetailsFragment"
         android:label="Current Month"
-        tools:layout="@layout/current_month_details_fragment" />
+        tools:layout="@layout/current_month_details_fragment" >
+        <action
+            android:id="@+id/action_currentMonthDetailsFragment_to_entryDetails"
+            app:destination="@id/entryDetails" />
+    </fragment>
 
     <fragment
         android:id="@+id/progressFragment"
         android:name="com.example.happinessperspective.progress.ProgressFragment"
         android:label="Progress"
         tools:layout="@layout/progress_fragment" />
+    <fragment
+        android:id="@+id/entryDetails"
+        android:name="com.example.happinessperspective.entryDetails.EntryDetails"
+        android:label="Details"
+        tools:layout="@layout/entry_details_fragment" >
+        <argument android:name="selectedEntry"
+            app:argType="com.example.happinessperspective.database.Entry" />
+    </fragment>
 
 </navigation>
