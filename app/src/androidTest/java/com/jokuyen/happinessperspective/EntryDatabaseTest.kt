@@ -55,7 +55,20 @@ class EntryDatabaseTest: HelperFunction {
         dao.insert(entry)
         val result = dao.getMostRecentEntry()
 
-        assertEquals(result?.date, entry.date)
+        // Automatically-generated entryId starts at 1
+        assertEquals(entry.entryId + 1, result?.entryId)
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun insertAndDeleteEntry_ShouldReturnNull() {
+        val entry = Entry(date = dateString, subject = "Test Subject", note = null, year = currentYear, month = currentMonth, day = currentDay)
+        dao.insert(entry)
+        dao.clear()
+
+        val result = dao.getMostRecentEntry()
+
+        assertEquals(null, result?.date)
     }
 
     @Test
