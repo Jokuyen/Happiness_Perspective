@@ -20,6 +20,9 @@ interface EntryDao {
     @Query("DELETE FROM entry_table")
     fun clear()
 
+    @Query("DELETE FROM entry_table WHERE strftime('%m', date) = :month AND strftime('%Y', date) = :year")
+    fun clearCurrentMonthAndYear(month: String, year: String)
+
     @Query("SELECT * FROM entry_table ORDER BY entryId DESC")
     fun getAllEntries(): LiveData<List<Entry>>
 

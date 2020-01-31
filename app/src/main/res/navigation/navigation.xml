@@ -22,7 +22,9 @@
         tools:layout="@layout/new_entry_fragment">
         <action
             android:id="@+id/action_newEntryFragment_to_currentMonthDetailsFragment"
-            app:destination="@id/currentMonthDetailsFragment" />
+            app:destination="@id/currentMonthDetailsFragment"
+            app:popUpTo="@+id/newEntryFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -48,5 +50,10 @@
         <argument android:name="selectedEntry"
             app:argType="com.jokuyen.happinessperspective.database.Entry" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.jokuyen.happinessperspective.settings.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/settings_fragment" />
 
 </navigation>

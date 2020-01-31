@@ -15,5 +15,4 @@ class CurrentMonthDetailsViewModel(val dao: EntryDao, application: Application) 
     private val _entries = dao.getEntriesForSelectedMonthAndYear(currentMonth, currentYear)
     val entries : LiveData<List<Entry>>
         get() = _entries
-
 }

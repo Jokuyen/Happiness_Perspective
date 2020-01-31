@@ -11,4 +11,9 @@
         android:icon="@drawable/ic_view_agenda_24px"
         android:title="Current Month" />
 
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_settings_24px"
+        android:title="Settings" />
+
 </menu>
