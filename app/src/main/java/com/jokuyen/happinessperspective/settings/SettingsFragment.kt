@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 
-import com.jokuyen.happinessperspective.R
 import com.jokuyen.happinessperspective.database.EntryDatabase
 import com.jokuyen.happinessperspective.databinding.SettingsFragmentBinding
 
@@ -22,7 +21,7 @@ class SettingsFragment : Fragment() {
     ): View? {
         binding = SettingsFragmentBinding.inflate(inflater)
 
-        return inflater.inflate(R.layout.settings_fragment, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
