@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.happinessperspective.newEntry.NewEntryViewModel" />
+            type="com.jokuyen.happinessperspective.newEntry.NewEntryViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

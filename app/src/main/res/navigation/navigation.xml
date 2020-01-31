@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.happinessperspective.home.HomeFragment"
+        android:name="com.jokuyen.happinessperspective.home.HomeFragment"
         android:label="Happiness Perspective"
         tools:layout="@layout/home_fragment">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/newEntryFragment"
-        android:name="com.example.happinessperspective.newEntry.NewEntryFragment"
+        android:name="com.jokuyen.happinessperspective.newEntry.NewEntryFragment"
         android:label="New Entry"
         tools:layout="@layout/new_entry_fragment">
         <action
@@ -27,7 +27,7 @@
 
     <fragment
         android:id="@+id/currentMonthDetailsFragment"
-        android:name="com.example.happinessperspective.currentMonth.CurrentMonthDetailsFragment"
+        android:name="com.jokuyen.happinessperspective.currentMonth.CurrentMonthDetailsFragment"
         android:label="Current Month"
         tools:layout="@layout/current_month_details_fragment" >
         <action
@@ -37,16 +37,16 @@
 
     <fragment
         android:id="@+id/progressFragment"
-        android:name="com.example.happinessperspective.progress.ProgressFragment"
+        android:name="com.jokuyen.happinessperspective.progress.ProgressFragment"
         android:label="Progress"
         tools:layout="@layout/progress_fragment" />
     <fragment
         android:id="@+id/entryDetailsFragment"
-        android:name="com.example.happinessperspective.entryDetails.EntryDetailsFragment"
+        android:name="com.jokuyen.happinessperspective.entryDetails.EntryDetailsFragment"
         android:label="Details"
         tools:layout="@layout/entry_details_fragment" >
         <argument android:name="selectedEntry"
-            app:argType="com.example.happinessperspective.database.Entry" />
+            app:argType="com.jokuyen.happinessperspective.database.Entry" />
     </fragment>
 
 </navigation>
