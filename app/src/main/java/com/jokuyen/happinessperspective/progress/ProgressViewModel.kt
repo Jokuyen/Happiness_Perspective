@@ -10,18 +10,17 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 
-class ProgressViewModel(val dao: EntryDao, application: Application) : AndroidViewModel(application) {
-    val c = Calendar.getInstance()
-    val currentYear = c.get(Calendar.YEAR).toString()
+class ProgressViewModel(private val dao: EntryDao, application: Application) : AndroidViewModel(application) {
+    private val c = Calendar.getInstance()
+    private val currentYear = c.get(Calendar.YEAR).toString()
 
-    //private var _entries = MutableLiveData<List<Entry?>>()
-    val _entries = dao.getEntriesForSelectedYear(currentYear)
+    private val _entries = dao.getEntriesForSelectedYear(currentYear)
     val entries: LiveData<List<Entry>>
         get() = _entries
 
     fun getBarChartData() : BarData {
         // Create BarData object
-        var chartEntryList = ArrayList<BarEntry>()
+        val chartEntryList = ArrayList<BarEntry>()
 
         // Count entries for each month
         val monthEntryCount = IntArray(12)

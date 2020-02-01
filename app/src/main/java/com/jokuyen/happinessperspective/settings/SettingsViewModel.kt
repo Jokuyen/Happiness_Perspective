@@ -6,7 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import com.jokuyen.happinessperspective.database.EntryDao
 import kotlinx.coroutines.*
 
-class SettingsViewModel(val dao: EntryDao, application: Application) : AndroidViewModel(application) {
+class SettingsViewModel(private val dao: EntryDao, application: Application) : AndroidViewModel(application) {
 
     private var viewModelJob = Job()
 

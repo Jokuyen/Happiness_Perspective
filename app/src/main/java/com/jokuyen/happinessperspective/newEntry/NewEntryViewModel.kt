@@ -8,7 +8,7 @@ import com.jokuyen.happinessperspective.database.Entry
 import com.jokuyen.happinessperspective.database.EntryDao
 import kotlinx.coroutines.*
 
-class NewEntryViewModel(val dao: EntryDao, application: Application) : AndroidViewModel(application) {
+class NewEntryViewModel(private val dao: EntryDao, application: Application) : AndroidViewModel(application) {
     // Variables for entry object
     private var _date: String = ""
     private var _subject: String = ""

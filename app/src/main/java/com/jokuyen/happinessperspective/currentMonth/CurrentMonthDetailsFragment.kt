@@ -2,6 +2,7 @@ package com.jokuyen.happinessperspective.currentMonth
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -28,6 +29,8 @@ class CurrentMonthDetailsFragment : Fragment() {
                 CurrentMonthDetailsFragmentDirections.actionCurrentMonthDetailsFragmentToEntryDetails(it))
         })
 
+        setHasOptionsMenu(true)
+
         return binding.root
     }
 
@@ -44,5 +47,20 @@ class CurrentMonthDetailsFragment : Fragment() {
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.current_month_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.currentMonthMenu -> {
+                viewModel.onClearCurrentMonthAndYearButtonClick()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
