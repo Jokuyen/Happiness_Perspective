@@ -28,7 +28,7 @@ class CurrentMonthDetailsViewModel(private val dao: EntryDao, application: Appli
             dao.clearCurrentMonthAndYear(currentMonth, currentYear)
         }
 
-        Toast.makeText(getApplication(), "Cleared!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(getApplication(), "Deleted All Entries for Current Month!", Toast.LENGTH_SHORT).show()
     }
 
     fun onClearCurrentMonthAndYearButtonClick() {

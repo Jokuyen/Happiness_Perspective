@@ -17,7 +17,7 @@ class SettingsViewModel(private val dao: EntryDao, application: Application) : A
             dao.clear()
         }
 
-        Toast.makeText(getApplication(), "All Entries Cleared!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(getApplication(), "All Entries Deleted!", Toast.LENGTH_SHORT).show()
     }
 
     fun onClearDatabaseButtonClick() {
