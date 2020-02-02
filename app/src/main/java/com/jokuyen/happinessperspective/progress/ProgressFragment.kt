@@ -1,16 +1,15 @@
 package com.jokuyen.happinessperspective.progress
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-
+import com.github.mikephil.charting.components.XAxis
 import com.jokuyen.happinessperspective.database.EntryDatabase
 import com.jokuyen.happinessperspective.databinding.ProgressFragmentBinding
-import com.github.mikephil.charting.components.XAxis
 import kotlinx.android.synthetic.main.progress_fragment.*
 
 class ProgressFragment : Fragment() {

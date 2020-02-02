@@ -2,12 +2,10 @@ package com.jokuyen.happinessperspective.currentMonth
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.jokuyen.happinessperspective.R
-import com.jokuyen.happinessperspective.database.EntryDao
 
 import com.jokuyen.happinessperspective.database.EntryDatabase
 import com.jokuyen.happinessperspective.databinding.CurrentMonthDetailsFragmentBinding
@@ -49,6 +47,7 @@ class CurrentMonthDetailsFragment : Fragment() {
 
     }
 
+    // Overflow menu methods
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.current_month_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)

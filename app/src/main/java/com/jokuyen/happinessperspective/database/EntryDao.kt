@@ -1,7 +1,10 @@
 package com.jokuyen.happinessperspective.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface EntryDao {
@@ -14,11 +17,8 @@ interface EntryDao {
     @Query("SELECT * FROM entry_table WHERE entryId = :key")
     fun get(key: Long): Entry?
 
-    @Query("DELETE FROM entry_table")
-    fun clear()
-
-    @Query("DELETE FROM entry_table WHERE strftime('%m', date) = :month AND strftime('%Y', date) = :year")
-    fun clearCurrentMonthAndYear(month: String, year: String)
+    @Query("SELECT * FROM entry_table ORDER BY entryId DESC LIMIT 1")
+    fun getMostRecentEntry(): Entry?
 
     @Query("SELECT * FROM entry_table ORDER BY entryId DESC")
     fun getAllEntries(): LiveData<List<Entry>>
@@ -33,6 +33,12 @@ interface EntryDao {
             "ORDER BY strftime('%m', date) DESC, strftime('%d', date) DESC, entryId DESC")
     fun getEntriesForSelectedYear(year: String): LiveData<List<Entry>>
 
-    @Query("SELECT * FROM entry_table ORDER BY entryId DESC LIMIT 1")
-    fun getMostRecentEntry(): Entry?
+    @Query("DELETE FROM entry_table")
+    fun clear()
+
+    @Query("DELETE FROM entry_table WHERE entryId = :entryId")
+    fun clearCurrentEntry(entryId: Int)
+
+    @Query("DELETE FROM entry_table WHERE strftime('%m', date) = :month AND strftime('%Y', date) = :year")
+    fun clearCurrentMonthAndYear(month: String, year: String)
 }

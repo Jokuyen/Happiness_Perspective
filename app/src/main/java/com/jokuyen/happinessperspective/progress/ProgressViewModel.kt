@@ -4,11 +4,11 @@ import android.app.Application
 import android.icu.util.Calendar
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.jokuyen.happinessperspective.database.Entry
-import com.jokuyen.happinessperspective.database.EntryDao
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.jokuyen.happinessperspective.database.Entry
+import com.jokuyen.happinessperspective.database.EntryDao
 
 class ProgressViewModel(private val dao: EntryDao, application: Application) : AndroidViewModel(application) {
     private val c = Calendar.getInstance()

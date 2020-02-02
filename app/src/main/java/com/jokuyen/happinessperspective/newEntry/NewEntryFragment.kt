@@ -6,17 +6,16 @@ import android.icu.text.DateFormatSymbols
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.text.TextUtils
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.jokuyen.happinessperspective.R
 import com.jokuyen.happinessperspective.database.EntryDatabase
-
 import com.jokuyen.happinessperspective.databinding.NewEntryFragmentBinding
 import kotlinx.android.synthetic.main.new_entry_fragment.*
 

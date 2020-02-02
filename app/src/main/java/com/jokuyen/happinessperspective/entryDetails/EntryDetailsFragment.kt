@@ -1,11 +1,13 @@
 package com.jokuyen.happinessperspective.entryDetails
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
+import com.jokuyen.happinessperspective.R
+import com.jokuyen.happinessperspective.database.EntryDatabase
 
 import com.jokuyen.happinessperspective.databinding.EntryDetailsFragmentBinding
 
@@ -22,6 +24,8 @@ class EntryDetailsFragment : Fragment() {
         binding = EntryDetailsFragmentBinding.inflate(inflater)
         binding.setLifecycleOwner(this)
 
+        setHasOptionsMenu(true)
+
         return binding.root
     }
 
@@ -29,12 +33,29 @@ class EntryDetailsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         val entry = EntryDetailsFragmentArgs.fromBundle(arguments!!).selectedEntry
-        val application = requireNotNull(activity).application
+        val application = requireNotNull(this.activity).application
+        val dataSource = EntryDatabase.getInstance(application).entryDao
 
-        viewModelFactory = EntryDetailsViewModelFactory(entry, application)
+        // Create an instance of the ViewModel Factory
+        viewModelFactory = EntryDetailsViewModelFactory(entry, dataSource, application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(EntryDetailsViewModel::class.java)
 
         binding.viewModel = viewModel
     }
 
+    // Overflow menu methods
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.entry_details_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.currentMonthDetailsFragment -> {
+                viewModel.onDeleteCurrentEntryButtonClick()
+                return NavigationUI.onNavDestinationSelected(item, view!!.findNavController())
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

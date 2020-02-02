@@ -2,6 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/currentMonthMenu"
-        android:title="Delete All Entries For This Month" />
+        android:id="@+id/currentMonthDetailsFragment"
+        android:title="Delete Current Entry"
+        />
 </menu>

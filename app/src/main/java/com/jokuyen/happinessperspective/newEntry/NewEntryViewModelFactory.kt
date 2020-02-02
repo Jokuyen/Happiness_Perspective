@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.jokuyen.happinessperspective.database.EntryDao
-import java.lang.IllegalArgumentException
 
 class NewEntryViewModelFactory(
     private val dataSource: EntryDao,
