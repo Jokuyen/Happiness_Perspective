@@ -1,12 +1,15 @@
 package com.jokuyen.happinessperspective.progress
 
 import android.app.Application
+import android.graphics.Color
 import android.icu.util.Calendar
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.jokuyen.happinessperspective.R
 import com.jokuyen.happinessperspective.database.Entry
 import com.jokuyen.happinessperspective.database.EntryDao
 
@@ -36,6 +39,11 @@ class ProgressViewModel(private val dao: EntryDao, application: Application) : A
         }
 
         val set = BarDataSet(chartEntryList, "Entries")
+
+        val myColor = ContextCompat.getColor(getApplication(), R.color.secondaryColor)
+
+        set.setColor(myColor)
+
 
         // Display int instead of float value
         set.setValueFormatter(FloatToIntFormatter())

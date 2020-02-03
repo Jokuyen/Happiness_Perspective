@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import com.jokuyen.happinessperspective.MyApplication
 import com.jokuyen.happinessperspective.R
 import com.jokuyen.happinessperspective.database.EntryDatabase
 import com.jokuyen.happinessperspective.databinding.NewEntryFragmentBinding
@@ -88,7 +89,7 @@ class NewEntryFragment : Fragment() {
 
     private fun showDatePickerDialog(v: View) {
         val c = Calendar.getInstance()
-        val defaultYear = c.get(Calendar.YEAR)
+        val defaultYear = MyApplication().currentYear
         val defaultMonth = c.get(Calendar.MONTH)
         val defaultDay = c.get(Calendar.DAY_OF_MONTH)
 
