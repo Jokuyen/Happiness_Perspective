@@ -95,4 +95,32 @@ class EntryDatabaseTest: HelperFunction {
         assertEquals(2, results.getOrAwaitValue()[3].entryId)
         assertEquals(1, results.getOrAwaitValue()[4].entryId)
     }
+
+    @Test
+    @Throws(Exception::class)
+    fun getYears_ShouldReturnListOfUniqueYearsInAscendingOrder() {
+        // Insert years from 2019 - 2022, with 3 duplicates of 2020
+        val entry1 = Entry(date = dateString, subject = "Test Subject 1", note = null, year = 2020, month = currentMonth, day = currentDay)
+        val entry2 = Entry(date = dateString, subject = "Test Subject 2", note = null, year = 2021, month = currentMonth, day = currentDay)
+        val entry3 = Entry(date = dateString, subject = "Test Subject 3", note = null, year = 2022, month = currentMonth, day = currentDay)
+        val entry4 = Entry(date = dateString, subject = "Test Subject 4", note = null, year = 2020, month = currentMonth, day = currentDay)
+        val entry5 = Entry(date = dateString, subject = "Test Subject 5", note = null, year = 2019, month = currentMonth, day = currentDay)
+        val entry6 = Entry(date = dateString, subject = "Test Subject 4", note = null, year = 2020, month = currentMonth, day = currentDay)
+
+        dao.insert(entry1)
+        dao.insert(entry2)
+        dao.insert(entry3)
+        dao.insert(entry4)
+        dao.insert(entry5)
+        dao.insert(entry6)
+
+        val results = dao.getYears()
+
+        // First value of the list should be earliest year, which would be 2019
+        assertEquals(4, results.size)
+        assertEquals(2019, results[0])
+        assertEquals(2020, results[1])
+        assertEquals(2021, results[2])
+        assertEquals(2022, results[3])
+    }
 }

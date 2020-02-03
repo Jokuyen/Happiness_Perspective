@@ -14,6 +14,10 @@ interface EntryDao {
     @Update
     fun update(input: Entry)
 
+    @Query("SELECT DISTINCT year FROM entry_table ORDER BY year ASC")
+    fun getYears(): List<Int>
+
+    // Get entries methods
     @Query("SELECT * FROM entry_table WHERE entryId = :key")
     fun get(key: Long): Entry?
 
@@ -33,6 +37,7 @@ interface EntryDao {
             "ORDER BY strftime('%m', date) DESC, strftime('%d', date) DESC, entryId DESC")
     fun getEntriesForSelectedYear(year: String): LiveData<List<Entry>>
 
+    // Clear methods
     @Query("DELETE FROM entry_table")
     fun clear()
 
