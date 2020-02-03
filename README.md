@@ -64,3 +64,5 @@ Afternote: I realized a simpler solution would be using an Int array of size=12 
 #### Transferring Previous Experience to MPAndroidChart
 
 #### Tried Unit Testing
+
+#### Avoided global variable by using MyAppplication class (inherited from Application class)
