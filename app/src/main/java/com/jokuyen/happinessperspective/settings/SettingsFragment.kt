@@ -9,6 +9,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.jokuyen.happinessperspective.database.EntryDatabase
 import com.jokuyen.happinessperspective.databinding.SettingsFragmentBinding
@@ -40,14 +41,16 @@ class SettingsFragment : Fragment() {
 
         binding.viewModel = viewModel
 
-        // Testing the spinner
-        //Todo: Get array of years from database
-        val colors = arrayOf("Red","Green","Blue","Yellow","Black","Crimson","Orange")
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, colors)
-        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
+        // Setup year spinner
+        viewModel.yearsArray.observe(viewLifecycleOwner, Observer {
+            val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, it)
+            adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
 
-        current_year_spinner.adapter = adapter
+            current_year_spinner.adapter = adapter
+        })
+
         current_year_spinner.onItemSelectedListener = SpinnerAdapterListener()
+
     }
 
 }

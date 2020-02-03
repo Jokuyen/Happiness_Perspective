@@ -98,14 +98,14 @@ class EntryDatabaseTest: HelperFunction {
 
     @Test
     @Throws(Exception::class)
-    fun getYears_ShouldReturnListOfUniqueYearsInAscendingOrder() {
+    fun getYears_ShouldReturnArrayOfUniqueYearsInAscendingOrder() {
         // Insert years from 2019 - 2022, with 3 duplicates of 2020
         val entry1 = Entry(date = dateString, subject = "Test Subject 1", note = null, year = 2020, month = currentMonth, day = currentDay)
         val entry2 = Entry(date = dateString, subject = "Test Subject 2", note = null, year = 2021, month = currentMonth, day = currentDay)
         val entry3 = Entry(date = dateString, subject = "Test Subject 3", note = null, year = 2022, month = currentMonth, day = currentDay)
         val entry4 = Entry(date = dateString, subject = "Test Subject 4", note = null, year = 2020, month = currentMonth, day = currentDay)
         val entry5 = Entry(date = dateString, subject = "Test Subject 5", note = null, year = 2019, month = currentMonth, day = currentDay)
-        val entry6 = Entry(date = dateString, subject = "Test Subject 4", note = null, year = 2020, month = currentMonth, day = currentDay)
+        val entry6 = Entry(date = dateString, subject = "Test Subject 6", note = null, year = 2020, month = currentMonth, day = currentDay)
 
         dao.insert(entry1)
         dao.insert(entry2)
@@ -116,11 +116,11 @@ class EntryDatabaseTest: HelperFunction {
 
         val results = dao.getYears()
 
-        // First value of the list should be earliest year, which would be 2019
-        assertEquals(4, results.size)
-        assertEquals(2019, results[0])
-        assertEquals(2020, results[1])
-        assertEquals(2021, results[2])
-        assertEquals(2022, results[3])
+        // First value of the array should be earliest year, which would be 2019
+        assertEquals(4, results.getOrAwaitValue().size)
+        assertEquals(2019, results.getOrAwaitValue()[0])
+        assertEquals(2020, results.getOrAwaitValue()[1])
+        assertEquals(2021, results.getOrAwaitValue()[2])
+        assertEquals(2022, results.getOrAwaitValue()[3])
     }
 }

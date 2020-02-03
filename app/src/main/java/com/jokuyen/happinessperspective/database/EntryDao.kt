@@ -15,7 +15,7 @@ interface EntryDao {
     fun update(input: Entry)
 
     @Query("SELECT DISTINCT year FROM entry_table ORDER BY year ASC")
-    fun getYears(): List<Int>
+    fun getYears(): LiveData<Array<Int>>
 
     // Get entries methods
     @Query("SELECT * FROM entry_table WHERE entryId = :key")
