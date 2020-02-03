@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -7,9 +9,7 @@
             type="com.jokuyen.happinessperspective.settings.SettingsViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".settings.SettingsFragment">
@@ -19,15 +19,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:onClick="@{() -> viewModel.onClearDatabaseButtonClick()}"
             android:text="Delete All Entries"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/current_year_spinner" />
+
+        <Spinner
+            android:id="@+id/current_year_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             app:layout_constraintTop_toTopOf="parent"
-            android:onClick="@{() -> viewModel.onClearDatabaseButtonClick()}"
-            />
+            tools:layout_editor_absoluteX="1dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

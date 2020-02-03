@@ -8,6 +8,10 @@ import kotlinx.coroutines.*
 
 class SettingsViewModel(private val dao: EntryDao, application: Application) : AndroidViewModel(application) {
 
+    fun onChangeCurrentYearButtonClick() {
+
+    }
+
     private var viewModelJob = Job()
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
