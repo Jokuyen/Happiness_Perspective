@@ -1,21 +1,19 @@
 package com.jokuyen.happinessperspective.progress
 
 import android.app.Application
-import android.graphics.Color
-import android.icu.util.Calendar
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
+import com.jokuyen.happinessperspective.CurrentYearSingleton
 import com.jokuyen.happinessperspective.R
 import com.jokuyen.happinessperspective.database.Entry
 import com.jokuyen.happinessperspective.database.EntryDao
 
 class ProgressViewModel(private val dao: EntryDao, application: Application) : AndroidViewModel(application) {
-    private val c = Calendar.getInstance()
-    private val currentYear = c.get(Calendar.YEAR).toString()
+    private val currentYear = CurrentYearSingleton.currentYear.toString()
 
     private val _entries = dao.getEntriesForSelectedYear(currentYear)
     val entries: LiveData<List<Entry>>

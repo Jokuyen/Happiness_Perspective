@@ -1,5 +1,6 @@
 package com.jokuyen.happinessperspective
 
+import android.icu.util.Calendar
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -15,6 +16,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Setup "CurrentYear" singleton to be used throughout application
+        val c = Calendar.getInstance()
+        CurrentYearSingleton.changeCurrentYear(c.get(Calendar.YEAR))
 
         @Suppress("UNUSED_VARIABLE")
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
