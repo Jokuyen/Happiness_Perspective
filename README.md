@@ -65,4 +65,4 @@ Afternote: I realized a simpler solution would be using an Int array of size=12 
 
 #### Tried Unit Testing
 
-#### Avoided global variable by using MyAppplication class (inherited from Application class)
+#### Avoided global variable by using Singleton class
