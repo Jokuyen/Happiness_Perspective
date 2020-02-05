@@ -96,7 +96,7 @@ class NewEntryFragment : Fragment() {
             })
     }
 
-    private fun showDatePickerDialog(@SuppressWarnings("unused") v: View) {
+    private fun showDatePickerDialog(@Suppress("UNUSED_PARAMETER") v: View) {
         val datePicker = DatePickerDialog(requireContext(),
             DatePickerDialog.OnDateSetListener { _, inputYear, inputMonth, inputDay ->
                 userYear = inputYear
