@@ -46,4 +46,7 @@ interface EntryDao {
 
     @Query("DELETE FROM entry_table WHERE strftime('%m', date) = :month AND strftime('%Y', date) = :year")
     fun clearCurrentMonthAndYear(month: String, year: String)
+
+    @Query("DELETE FROM entry_table WHERE strftime('%Y', date) = :year")
+    fun clearCurrentYear(year: String)
 }

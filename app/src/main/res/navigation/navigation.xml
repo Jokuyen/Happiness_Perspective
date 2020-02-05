@@ -71,5 +71,14 @@
             android:name="monthArg"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/allMonthsFragment"
+        android:name="com.jokuyen.happinessperspective.allMonths.AllMonthsFragment"
+        android:label="All Months"
+        tools:layout="@layout/all_months_fragment">
+        <action
+            android:id="@+id/action_allMonthsFragment_to_entryDetailsFragment"
+            app:destination="@id/entryDetailsFragment" />
+    </fragment>
 
 </navigation>
