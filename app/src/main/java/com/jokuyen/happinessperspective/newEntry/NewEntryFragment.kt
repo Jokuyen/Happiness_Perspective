@@ -27,7 +27,7 @@ class NewEntryFragment : Fragment() {
     private lateinit var viewModelFactory: NewEntryViewModelFactory
 
     val c = Calendar.getInstance()
-    val defaultYear = CurrentYearSingleton.currentYear
+    val defaultYear = c.get(Calendar.YEAR)
     val defaultMonth = c.get(Calendar.MONTH)
     val defaultDay = c.get(Calendar.DAY_OF_MONTH)
 
