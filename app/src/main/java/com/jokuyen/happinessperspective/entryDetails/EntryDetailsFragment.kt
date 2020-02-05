@@ -51,9 +51,9 @@ class EntryDetailsFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.homeFragment -> {
+            R.id.delete_current_entry -> {
                 viewModel.onDeleteCurrentEntryButtonClick()
-                return NavigationUI.onNavDestinationSelected(item, view!!.findNavController())
+                parentFragmentManager.popBackStack()
             }
         }
         return super.onOptionsItemSelected(item)

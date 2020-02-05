@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- id is "homeFragment" b/c when menu item is clicked, it navigates back to homeFragment -->
     <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/delete_current_entry"
         android:title="Delete Current Entry"
         />
 </menu>
