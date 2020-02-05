@@ -2,7 +2,7 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/currentMonthDetailsFragment"
+        android:id="@+id/currentMonthFragment"
         android:icon="@drawable/ic_view_agenda_24px"
         android:title="Current Month" />
 

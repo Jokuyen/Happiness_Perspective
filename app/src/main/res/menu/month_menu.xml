@@ -2,6 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/currentMonthMenu"
+        android:id="@+id/monthMenu"
         android:title="Delete All Entries For This Month" />
 </menu>

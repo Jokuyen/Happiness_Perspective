@@ -51,7 +51,7 @@ class EntryDetailsFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.currentMonthDetailsFragment -> {
+            R.id.homeFragment -> {
                 viewModel.onDeleteCurrentEntryButtonClick()
                 return NavigationUI.onNavDestinationSelected(item, view!!.findNavController())
             }

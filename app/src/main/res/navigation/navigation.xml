@@ -21,26 +21,19 @@
         android:label="New Entry"
         tools:layout="@layout/new_entry_fragment">
         <action
-            android:id="@+id/action_newEntryFragment_to_currentMonthDetailsFragment"
-            app:destination="@id/currentMonthDetailsFragment"
-            app:popUpTo="@+id/newEntryFragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_newEntryFragment_to_specificMonthFragment"
+            app:destination="@id/specificMonthFragment"
+            app:popUpTo="@+id/newEntryFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/currentMonthDetailsFragment"
-        android:name="com.jokuyen.happinessperspective.currentMonth.CurrentMonthDetailsFragment"
+        android:id="@+id/currentMonthFragment"
+        android:name="com.jokuyen.happinessperspective.currentMonth.CurrentMonthFragment"
         android:label="Current Month"
-        tools:layout="@layout/current_month_details_fragment" >
+        tools:layout="@layout/current_month_fragment" >
         <action
-            android:id="@+id/action_currentMonthDetailsFragment_to_entryDetails"
+            android:id="@+id/action_currentMonthFragment_to_entryDetails"
             app:destination="@id/entryDetailsFragment" />
-        <argument
-            android:name="yearArg"
-            app:argType="integer" />
-        <argument
-            android:name="monthArg"
-            app:argType="integer" />
     </fragment>
 
     <fragment
@@ -63,5 +56,20 @@
         android:name="com.jokuyen.happinessperspective.settings.SettingsFragment"
         android:label="Settings"
         tools:layout="@layout/settings_fragment" />
+    <fragment
+        android:id="@+id/specificMonthFragment"
+        android:name="com.jokuyen.happinessperspective.specificMonth.SpecificMonthFragment"
+        android:label="Specific Month"
+        tools:layout="@layout/specific_month_fragment">
+        <action
+            android:id="@+id/action_specificMonthFragment_to_entryDetailsFragment"
+            app:destination="@id/entryDetailsFragment" />
+        <argument
+            android:name="yearArg"
+            app:argType="integer" />
+        <argument
+            android:name="monthArg"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>

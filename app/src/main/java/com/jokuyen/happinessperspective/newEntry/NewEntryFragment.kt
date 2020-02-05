@@ -90,13 +90,13 @@ class NewEntryFragment : Fragment() {
             Observer<Boolean> { shouldNavigate ->
                 if (shouldNavigate == true) {
                     val navController = binding.root.findNavController()
-                    navController.navigate(NewEntryFragmentDirections.actionNewEntryFragmentToCurrentMonthDetailsFragment(userYear, userMonth))
+                    navController.navigate(NewEntryFragmentDirections.actionNewEntryFragmentToSpecificMonthFragment(userYear, userMonth))
                     viewModel.onNavigatedCompleted()
                 }
             })
     }
 
-    private fun showDatePickerDialog(v: View) {
+    private fun showDatePickerDialog(@SuppressWarnings("unused") v: View) {
         val datePicker = DatePickerDialog(requireContext(),
             DatePickerDialog.OnDateSetListener { _, inputYear, inputMonth, inputDay ->
                 userYear = inputYear

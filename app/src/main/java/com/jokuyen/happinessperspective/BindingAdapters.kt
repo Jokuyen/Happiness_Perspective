@@ -2,7 +2,6 @@ package com.jokuyen.happinessperspective
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.jokuyen.happinessperspective.currentMonth.RecyclerViewAdapter
 import com.jokuyen.happinessperspective.database.Entry
 
 @BindingAdapter("listData")
