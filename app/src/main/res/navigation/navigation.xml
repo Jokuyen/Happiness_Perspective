@@ -35,6 +35,12 @@
         <action
             android:id="@+id/action_currentMonthDetailsFragment_to_entryDetails"
             app:destination="@id/entryDetailsFragment" />
+        <argument
+            android:name="yearArg"
+            app:argType="integer" />
+        <argument
+            android:name="monthArg"
+            app:argType="integer" />
     </fragment>
 
     <fragment
@@ -42,6 +48,7 @@
         android:name="com.jokuyen.happinessperspective.progress.ProgressFragment"
         android:label="Progress"
         tools:layout="@layout/progress_fragment" />
+
     <fragment
         android:id="@+id/entryDetailsFragment"
         android:name="com.jokuyen.happinessperspective.entryDetails.EntryDetailsFragment"
@@ -50,6 +57,7 @@
         <argument android:name="selectedEntry"
             app:argType="com.jokuyen.happinessperspective.database.Entry" />
     </fragment>
+
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.jokuyen.happinessperspective.settings.SettingsFragment"

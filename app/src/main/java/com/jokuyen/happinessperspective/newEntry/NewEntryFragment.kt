@@ -26,6 +26,15 @@ class NewEntryFragment : Fragment() {
     private lateinit var viewModel: NewEntryViewModel
     private lateinit var viewModelFactory: NewEntryViewModelFactory
 
+    val c = Calendar.getInstance()
+    val defaultYear = CurrentYearSingleton.currentYear
+    val defaultMonth = c.get(Calendar.MONTH)
+    val defaultDay = c.get(Calendar.DAY_OF_MONTH)
+
+    // SafeArgs for CurrentMonthFragment
+    var userYear = 0
+    var userMonth = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -81,20 +90,18 @@ class NewEntryFragment : Fragment() {
             Observer<Boolean> { shouldNavigate ->
                 if (shouldNavigate == true) {
                     val navController = binding.root.findNavController()
-                    navController.navigate(R.id.action_newEntryFragment_to_currentMonthDetailsFragment)
+                    navController.navigate(NewEntryFragmentDirections.actionNewEntryFragmentToCurrentMonthDetailsFragment(userYear, userMonth))
                     viewModel.onNavigatedCompleted()
                 }
             })
     }
 
     private fun showDatePickerDialog(v: View) {
-        val c = Calendar.getInstance()
-        val defaultYear = CurrentYearSingleton.currentYear
-        val defaultMonth = c.get(Calendar.MONTH)
-        val defaultDay = c.get(Calendar.DAY_OF_MONTH)
-
         val datePicker = DatePickerDialog(requireContext(),
             DatePickerDialog.OnDateSetListener { _, inputYear, inputMonth, inputDay ->
+                userYear = inputYear
+                userMonth = inputMonth
+
                 viewModel.setDate(inputYear, inputMonth, inputDay)
 
                 val monthString = DateFormatSymbols().getMonths()[inputMonth]

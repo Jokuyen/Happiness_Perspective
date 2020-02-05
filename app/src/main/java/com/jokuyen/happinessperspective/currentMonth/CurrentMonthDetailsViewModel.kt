@@ -10,10 +10,11 @@ import com.jokuyen.happinessperspective.database.Entry
 import com.jokuyen.happinessperspective.database.EntryDao
 import kotlinx.coroutines.*
 
-class CurrentMonthDetailsViewModel(private val dao: EntryDao, application: Application) : AndroidViewModel(application) {
-    private val c = Calendar.getInstance()
-    private val currentYear = CurrentYearSingleton.currentYear.toString()
-    private val currentMonth = String.format("%02d", c.get(Calendar.MONTH) + 1)
+class CurrentMonthDetailsViewModel(
+    private val currentYear: String,
+    private val currentMonth: String,
+    private val dao: EntryDao,
+    application: Application) : AndroidViewModel(application) {
 
     private val _entries = dao.getEntriesForSelectedMonthAndYear(currentMonth, currentYear)
     val entries : LiveData<List<Entry>>

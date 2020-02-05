@@ -14,6 +14,7 @@ data class Entry (
     @PrimaryKey(autoGenerate = true)
     var entryId: Int = 0,
 
+    // Month range will be 01-12, not 00-11
     var date: String,
 
     var subject: String,
