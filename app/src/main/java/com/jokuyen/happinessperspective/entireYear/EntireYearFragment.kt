@@ -10,10 +10,10 @@ import com.jokuyen.happinessperspective.R
 
 import com.jokuyen.happinessperspective.RecyclerViewAdapter
 import com.jokuyen.happinessperspective.database.EntryDatabase
-import com.jokuyen.happinessperspective.databinding.AllMonthsFragmentBinding
+import com.jokuyen.happinessperspective.databinding.EntireYearFragmentBinding
 
 class EntireYearFragment : Fragment() {
-    private lateinit var binding: AllMonthsFragmentBinding
+    private lateinit var binding: EntireYearFragmentBinding
     private lateinit var viewModel: EntireYearViewModel
     private lateinit var viewModelFactory : EntireYearViewModelFactory
 
@@ -21,7 +21,7 @@ class EntireYearFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = AllMonthsFragmentBinding.inflate(inflater)
+        binding = EntireYearFragmentBinding.inflate(inflater)
 
         binding.recyclerView.adapter =
             RecyclerViewAdapter(

@@ -70,7 +70,7 @@
     <fragment
         android:id="@+id/entireYearFragment"
         android:name="com.jokuyen.happinessperspective.entireYear.EntireYearFragment"
-        tools:layout="@layout/all_months_fragment">
+        tools:layout="@layout/entire_year_fragment">
         <action
             android:id="@+id/action_entireYearFragment_to_entryDetailsFragment"
             app:destination="@id/entryDetailsFragment" />
