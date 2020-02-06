@@ -81,7 +81,7 @@
             android:layout_gravity="end|bottom"
             android:layout_margin="20dp"
             android:text="@string/submit_entry_fab_label"
-            android:textAlignment="center"
+            app:icon="@drawable/ic_plus_24px"
             android:visibility="invisible"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
