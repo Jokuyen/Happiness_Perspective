@@ -2,6 +2,11 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/progressChartFragment"
+        android:icon="@drawable/ic_bar_chart_24px"
+        android:title="Progress Chart" />
+
+    <item
         android:id="@+id/currentMonthFragment"
         android:icon="@drawable/ic_view_agenda_24px"
         android:title="Current Month" />
@@ -10,11 +15,6 @@
         android:id="@+id/allMonthsFragment"
         android:icon="@drawable/ic_view_agenda_24px"
         android:title="All Months" />
-
-    <item
-        android:id="@+id/progressFragment"
-        android:icon="@drawable/ic_bar_chart_24px"
-        android:title="Progress" />
 
     <item
         android:id="@+id/settingsFragment"

@@ -1,4 +1,4 @@
-package com.jokuyen.happinessperspective.progress
+package com.jokuyen.happinessperspective.progressChart
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,11 +12,11 @@ import com.jokuyen.happinessperspective.database.EntryDatabase
 import com.jokuyen.happinessperspective.databinding.ProgressFragmentBinding
 import kotlinx.android.synthetic.main.progress_fragment.*
 
-class ProgressFragment : Fragment() {
+class ProgressChartFragment : Fragment() {
 
     private lateinit var binding: ProgressFragmentBinding
-    private lateinit var viewModel: ProgressViewModel
-    private lateinit var viewModelFactory: ProgressViewModelFactory
+    private lateinit var viewModel: ProgressChartViewModel
+    private lateinit var viewModelFactory: ProgressChartViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,13 +34,13 @@ class ProgressFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val dataSource = EntryDatabase.getInstance(application).entryDao
         viewModelFactory =
-            ProgressViewModelFactory(
+            ProgressChartViewModelFactory(
                 dataSource,
                 application
             )
 
         // Get a reference to the ViewModel associated with this fragment
-        viewModel = ViewModelProvider(this, viewModelFactory).get(ProgressViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(ProgressChartViewModel::class.java)
         binding.setLifecycleOwner(this)
 
         // Set up chart

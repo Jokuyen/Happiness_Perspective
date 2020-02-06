@@ -1,4 +1,4 @@
-package com.jokuyen.happinessperspective.progress
+package com.jokuyen.happinessperspective.progressChart
 
 import android.app.Application
 import androidx.core.content.ContextCompat
@@ -12,7 +12,7 @@ import com.jokuyen.happinessperspective.R
 import com.jokuyen.happinessperspective.database.Entry
 import com.jokuyen.happinessperspective.database.EntryDao
 
-class ProgressViewModel(private val dao: EntryDao, application: Application) : AndroidViewModel(application) {
+class ProgressChartViewModel(private val dao: EntryDao, application: Application) : AndroidViewModel(application) {
     private val currentYear = CurrentYearSingleton.currentYear.toString()
 
     private val _entries = dao.getEntriesForSelectedYear(currentYear)

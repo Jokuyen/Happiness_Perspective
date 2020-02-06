@@ -35,8 +35,8 @@
     </fragment>
 
     <fragment
-        android:id="@+id/progressFragment"
-        android:name="com.jokuyen.happinessperspective.progress.ProgressFragment"
+        android:id="@+id/progressChartFragment"
+        android:name="com.jokuyen.happinessperspective.progressChart.ProgressChartFragment"
         tools:layout="@layout/progress_fragment" />
 
     <fragment

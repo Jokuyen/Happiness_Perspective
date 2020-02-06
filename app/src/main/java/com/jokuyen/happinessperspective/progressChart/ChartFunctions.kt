@@ -1,4 +1,4 @@
-package com.jokuyen.happinessperspective.progress
+package com.jokuyen.happinessperspective.progressChart
 
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.formatter.ValueFormatter
