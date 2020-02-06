@@ -23,6 +23,7 @@ data class Entry (
 
     var year: Int,
 
+    // Month range will be 0-11, not 1-12
     var month: Int,
 
     var day: Int

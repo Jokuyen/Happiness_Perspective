@@ -34,7 +34,7 @@ interface EntryDao {
 
     @Query("SELECT * FROM entry_table " +
             "WHERE strftime('%Y', date) = :year " +
-            "ORDER BY strftime('%m', date) DESC, strftime('%d', date) DESC, entryId DESC")
+            "ORDER BY strftime('%m', date) ASC, strftime('%d', date) ASC, entryId ASC")
     fun getEntriesForSelectedYear(year: String): LiveData<List<Entry>>
 
     // Clear methods
@@ -49,4 +49,15 @@ interface EntryDao {
 
     @Query("DELETE FROM entry_table WHERE strftime('%Y', date) = :year")
     fun clearCurrentYear(year: String)
+
+    // TEST
+    @Query("SELECT * FROM entry_table " +
+            "WHERE strftime('%m', date) = :month AND strftime('%Y', date) = :year " +
+            "ORDER BY strftime('%d', date) DESC, entryId DESC")
+    fun getEntriesForSelectedMonthAndYearTEST(month: String, year: String): List<Entry>
+
+    @Query("SELECT * FROM entry_table " +
+            "WHERE strftime('%Y', date) = :year " +
+            "ORDER BY strftime('%m', date) ASC, strftime('%d', date) ASC, entryId ASC")
+    fun getEntriesForSelectedYearTEST(year: String): List<Entry>
 }
