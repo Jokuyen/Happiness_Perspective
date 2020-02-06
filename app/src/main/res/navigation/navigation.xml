@@ -34,8 +34,7 @@
         tools:layout="@layout/current_month_fragment" >
         <action
             android:id="@+id/action_currentMonthFragment_to_entryDetails"
-            app:destination="@id/entryDetailsFragment"
-            app:popUpTo="@+id/currentMonthFragment" />
+            app:destination="@id/entryDetailsFragment" />
     </fragment>
 
     <fragment
@@ -65,8 +64,7 @@
         tools:layout="@layout/specific_month_fragment">
         <action
             android:id="@+id/action_specificMonthFragment_to_entryDetailsFragment"
-            app:destination="@id/entryDetailsFragment"
-            app:popUpTo="@+id/specificMonthFragment" />
+            app:destination="@id/entryDetailsFragment" />
         <argument
             android:name="yearArg"
             app:argType="integer" />
@@ -81,8 +79,7 @@
         tools:layout="@layout/all_months_fragment">
         <action
             android:id="@+id/action_allMonthsFragment_to_entryDetailsFragment"
-            app:destination="@id/entryDetailsFragment"
-            app:popUpTo="@+id/allMonthsFragment" />
+            app:destination="@id/entryDetailsFragment" />
     </fragment>
 
 </navigation>
