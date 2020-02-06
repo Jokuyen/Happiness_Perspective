@@ -21,8 +21,6 @@ data class Entry (
 
     var note: String?,
 
-    var favorite: Boolean = false,
-
     var year: Int,
 
     var month: Int,
