@@ -15,13 +15,14 @@ class RecyclerViewAdapter(private val onClickListener: OnClickListener) : ListAd
         }
 
         override fun areContentsTheSame(oldItem: Entry, newItem: Entry): Boolean {
-            return oldItem == newItem
+            return oldItem.entryId == newItem.entryId
         }
     }
 
     class EntryViewHolder(private var binding: EntryViewHolderBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(entry: Entry) {
+        fun bind(listener: OnClickListener, entry: Entry) {
             binding.entry = entry
+            binding.clickListener = listener
             binding.executePendingBindings()
         }
 
@@ -39,16 +40,10 @@ class RecyclerViewAdapter(private val onClickListener: OnClickListener) : ListAd
     }
 
     override fun onBindViewHolder(holder: EntryViewHolder, position: Int) {
-        val entry = getItem(position)
-
-        holder.itemView.setOnClickListener{
-            onClickListener.onClick(entry)
-        }
-
-        holder.bind(entry)
+        holder.bind(onClickListener, getItem(position))
     }
+}
 
-    class OnClickListener(val clickerListener: (entry: Entry) -> Unit) {
-        fun onClick(entry: Entry) = clickerListener(entry)
-    }
+class OnClickListener(val clickerListener: (entry: Entry) -> Unit) {
+    fun onClick(entry: Entry) = clickerListener(entry)
 }

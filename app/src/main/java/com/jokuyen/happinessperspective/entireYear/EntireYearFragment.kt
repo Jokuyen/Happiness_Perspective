@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
 import com.jokuyen.happinessperspective.CurrentYearSingleton
+import com.jokuyen.happinessperspective.OnClickListener
 import com.jokuyen.happinessperspective.R
 
 import com.jokuyen.happinessperspective.RecyclerViewAdapter
@@ -31,14 +32,15 @@ class EntireYearFragment : Fragment() {
     ): View? {
         binding = EntireYearFragmentBinding.inflate(inflater)
 
-        binding.recyclerView.adapter =
-            RecyclerViewAdapter(
-                RecyclerViewAdapter.OnClickListener {
-                    // Navigate to entry's detail screen
-                    this.findNavController().navigate(
-                        EntireYearFragmentDirections.actionEntireYearFragmentToEntryDetailsFragment(it)
-                    )
-                })
+        // Setup RecyclerView
+        val adapter = RecyclerViewAdapter(OnClickListener {
+            // Navigate to entry's detail screen
+            this.findNavController().navigate(
+                EntireYearFragmentDirections.actionEntireYearFragmentToEntryDetailsFragment(it)
+            )
+        })
+
+        binding.recyclerView.adapter = adapter
 
         setHasOptionsMenu(true)
 

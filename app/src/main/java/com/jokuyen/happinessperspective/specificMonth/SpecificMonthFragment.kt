@@ -5,6 +5,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.jokuyen.happinessperspective.OnClickListener
 
 import com.jokuyen.happinessperspective.R
 import com.jokuyen.happinessperspective.RecyclerViewAdapter
@@ -31,14 +32,16 @@ class SpecificMonthFragment : Fragment() {
         yearArg = args.yearArg
         monthArg = args.monthArg + 1
 
-        binding.recyclerView.adapter =
-            RecyclerViewAdapter(
-                RecyclerViewAdapter.OnClickListener {
-                    // Navigate to entry's detail screen
-                    this.findNavController().navigate(
-                        SpecificMonthFragmentDirections.actionSpecificMonthFragmentToEntryDetailsFragment(it)
-                    )
-                })
+        // Setup RecyclerView
+        val adapter = RecyclerViewAdapter(OnClickListener {
+            // Navigate to entry's detail screen
+            this.findNavController().navigate(
+                SpecificMonthFragmentDirections.actionSpecificMonthFragmentToEntryDetailsFragment(it)
+            )
+        })
+
+        binding.recyclerView.adapter = adapter
+
 
         setHasOptionsMenu(true)
 

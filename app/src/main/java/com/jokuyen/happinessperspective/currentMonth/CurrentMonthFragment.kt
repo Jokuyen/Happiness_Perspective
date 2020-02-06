@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.jokuyen.happinessperspective.OnClickListener
 import com.jokuyen.happinessperspective.R
 import com.jokuyen.happinessperspective.RecyclerViewAdapter
 
@@ -23,14 +24,15 @@ class CurrentMonthFragment : Fragment() {
     ): View? {
         binding = CurrentMonthFragmentBinding.inflate(inflater)
 
-        binding.recyclerView.adapter =
-            RecyclerViewAdapter(
-                RecyclerViewAdapter.OnClickListener {
-                    // Navigate to entry's detail screen
-                    this.findNavController().navigate(
-                        CurrentMonthFragmentDirections.actionCurrentMonthFragmentToEntryDetails(it)
-                    )
-                })
+        // Setup RecyclerView
+        val adapter = RecyclerViewAdapter(OnClickListener {
+            // Navigate to entry's detail screen
+            this.findNavController().navigate(
+                CurrentMonthFragmentDirections.actionCurrentMonthFragmentToEntryDetails(it)
+            )
+        })
+
+        binding.recyclerView.adapter = adapter
 
         setHasOptionsMenu(true)
 

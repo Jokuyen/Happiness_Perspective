@@ -7,6 +7,9 @@
         <variable
             name="entry"
             type="com.jokuyen.happinessperspective.database.Entry" />
+        <variable
+            name="clickListener"
+            type="com.jokuyen.happinessperspective.OnClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -18,7 +21,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:onClick="@{() -> clickListener.onClick(entry)}">
 
             <TextView
                 android:id="@+id/date_text"
