@@ -3,5 +3,5 @@
 
     <item
         android:id="@+id/monthMenu"
-        android:title="Delete All Entries For This Month" />
+        android:title="Delete Entire Month" />
 </menu>

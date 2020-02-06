@@ -3,6 +3,6 @@
 
     <item
         android:id="@+id/delete_current_entry"
-        android:title="Delete Current Entry"
+        android:title="Delete Entry"
         />
 </menu>

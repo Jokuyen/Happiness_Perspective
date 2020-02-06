@@ -1,4 +1,4 @@
-package com.jokuyen.happinessperspective.allMonths
+package com.jokuyen.happinessperspective.entireYear
 
 import android.os.Bundle
 import android.view.*
@@ -12,10 +12,10 @@ import com.jokuyen.happinessperspective.RecyclerViewAdapter
 import com.jokuyen.happinessperspective.database.EntryDatabase
 import com.jokuyen.happinessperspective.databinding.AllMonthsFragmentBinding
 
-class AllMonthsFragment : Fragment() {
+class EntireYearFragment : Fragment() {
     private lateinit var binding: AllMonthsFragmentBinding
-    private lateinit var viewModel: AllMonthsViewModel
-    private lateinit var viewModelFactory : AllMonthsViewModelFactory
+    private lateinit var viewModel: EntireYearViewModel
+    private lateinit var viewModelFactory : EntireYearViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,7 +28,7 @@ class AllMonthsFragment : Fragment() {
                 RecyclerViewAdapter.OnClickListener {
                     // Navigate to entry's detail screen
                     this.findNavController().navigate(
-                        AllMonthsFragmentDirections.actionAllMonthsFragmentToEntryDetailsFragment(it)
+                        EntireYearFragmentDirections.actionEntireYearFragmentToEntryDetailsFragment(it)
                     )
                 })
 
@@ -43,10 +43,10 @@ class AllMonthsFragment : Fragment() {
         // Create an instance of the ViewModel Factory
         val application = requireNotNull(this.activity).application
         val dataSource = EntryDatabase.getInstance(application).entryDao
-        viewModelFactory = AllMonthsViewModelFactory(dataSource, application)
+        viewModelFactory = EntireYearViewModelFactory(dataSource, application)
 
         // Get a reference to the ViewModel associated with this fragment
-        viewModel = ViewModelProvider(this, viewModelFactory).get(AllMonthsViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(EntireYearViewModel::class.java)
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
 
@@ -55,13 +55,13 @@ class AllMonthsFragment : Fragment() {
 
     // Overflow menu methods
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.all_months_menu, menu)
+        inflater.inflate(R.menu.entire_year_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.allMonthsMenu -> {
+            R.id.entireYearMenu -> {
                 viewModel.onClearCurrentYearButtonClick()
                 return true
             }

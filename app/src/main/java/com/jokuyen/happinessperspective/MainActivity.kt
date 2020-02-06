@@ -38,13 +38,12 @@ class MainActivity : AppCompatActivity() {
         // Set title for each fragment
         navController.addOnDestinationChangedListener { _, destination, _ ->
             title = when (destination.id) {
-                R.id.homeFragment -> "Happiness Perspective"
-                R.id.newEntryFragment -> "New Entry"
-
-                R.id.entryDetailsFragment -> "Entry Details"
-
+                R.id.homeFragment -> "The Happiness Perspective"
                 R.id.progressChartFragment -> "Progress Chart"
                 R.id.settingsFragment -> "Settings"
+
+                R.id.newEntryFragment -> "New Entry"
+                R.id.entryDetailsFragment -> "Entry Details"
 
                 else -> " "
             }

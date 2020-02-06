@@ -68,11 +68,11 @@
     </fragment>
 
     <fragment
-        android:id="@+id/allMonthsFragment"
-        android:name="com.jokuyen.happinessperspective.allMonths.AllMonthsFragment"
+        android:id="@+id/entireYearFragment"
+        android:name="com.jokuyen.happinessperspective.entireYear.EntireYearFragment"
         tools:layout="@layout/all_months_fragment">
         <action
-            android:id="@+id/action_allMonthsFragment_to_entryDetailsFragment"
+            android:id="@+id/action_entireYearFragment_to_entryDetailsFragment"
             app:destination="@id/entryDetailsFragment" />
     </fragment>
 

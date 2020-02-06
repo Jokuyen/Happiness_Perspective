@@ -12,9 +12,9 @@
         android:title="Current Month" />
 
     <item
-        android:id="@+id/allMonthsFragment"
+        android:id="@+id/entireYearFragment"
         android:icon="@drawable/ic_view_agenda_24px"
-        android:title="All Months" />
+        android:title="Entire Year" />
 
     <item
         android:id="@+id/settingsFragment"

@@ -1,4 +1,4 @@
-package com.jokuyen.happinessperspective.allMonths
+package com.jokuyen.happinessperspective.entireYear
 
 import android.app.Application
 import android.icu.util.Calendar
@@ -10,7 +10,7 @@ import com.jokuyen.happinessperspective.database.Entry
 import com.jokuyen.happinessperspective.database.EntryDao
 import kotlinx.coroutines.*
 
-class AllMonthsViewModel(private val dao: EntryDao, application: Application) : AndroidViewModel(application) {
+class EntireYearViewModel(private val dao: EntryDao, application: Application) : AndroidViewModel(application) {
     private val c = Calendar.getInstance()
     private var currentYear = CurrentYearSingleton.currentYear.toString()
 
