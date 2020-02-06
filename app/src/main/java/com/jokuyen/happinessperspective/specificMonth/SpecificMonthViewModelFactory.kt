@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.jokuyen.happinessperspective.database.EntryDao
 
 class SpecificMonthViewModelFactory(
-    private val yearArg: String,
-    private val monthArg: String,
+    private val yearArg: Int,
+    private val monthArg: Int,
     private val dataSource: EntryDao,
     private val application: Application
 ): ViewModelProvider.Factory {

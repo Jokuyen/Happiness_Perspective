@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.jokuyen.happinessperspective.home.HomeFragment"
-        android:label="Happiness Perspective"
         tools:layout="@layout/home_fragment">
         <action
             android:id="@+id/action_homeFragment_to_newEntry"
@@ -18,7 +17,6 @@
     <fragment
         android:id="@+id/newEntryFragment"
         android:name="com.jokuyen.happinessperspective.newEntry.NewEntryFragment"
-        android:label="New Entry"
         tools:layout="@layout/new_entry_fragment">
         <action
             android:id="@+id/action_newEntryFragment_to_specificMonthFragment"
@@ -30,7 +28,6 @@
     <fragment
         android:id="@+id/currentMonthFragment"
         android:name="com.jokuyen.happinessperspective.currentMonth.CurrentMonthFragment"
-        android:label="Current Month"
         tools:layout="@layout/current_month_fragment" >
         <action
             android:id="@+id/action_currentMonthFragment_to_entryDetails"
@@ -40,13 +37,11 @@
     <fragment
         android:id="@+id/progressFragment"
         android:name="com.jokuyen.happinessperspective.progress.ProgressFragment"
-        android:label="Progress"
         tools:layout="@layout/progress_fragment" />
 
     <fragment
         android:id="@+id/entryDetailsFragment"
         android:name="com.jokuyen.happinessperspective.entryDetails.EntryDetailsFragment"
-        android:label="Details"
         tools:layout="@layout/entry_details_fragment" >
         <argument android:name="selectedEntry"
             app:argType="com.jokuyen.happinessperspective.database.Entry" />
@@ -55,12 +50,11 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.jokuyen.happinessperspective.settings.SettingsFragment"
-        android:label="Settings"
         tools:layout="@layout/settings_fragment" />
+
     <fragment
         android:id="@+id/specificMonthFragment"
         android:name="com.jokuyen.happinessperspective.specificMonth.SpecificMonthFragment"
-        android:label="Specific Month"
         tools:layout="@layout/specific_month_fragment">
         <action
             android:id="@+id/action_specificMonthFragment_to_entryDetailsFragment"
@@ -72,10 +66,10 @@
             android:name="monthArg"
             app:argType="integer" />
     </fragment>
+
     <fragment
         android:id="@+id/allMonthsFragment"
         android:name="com.jokuyen.happinessperspective.allMonths.AllMonthsFragment"
-        android:label="All Months"
         tools:layout="@layout/all_months_fragment">
         <action
             android:id="@+id/action_allMonthsFragment_to_entryDetailsFragment"

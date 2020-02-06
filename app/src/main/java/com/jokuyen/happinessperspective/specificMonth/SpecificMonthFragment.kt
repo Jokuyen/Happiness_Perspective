@@ -16,8 +16,8 @@ class SpecificMonthFragment : Fragment() {
     private lateinit var viewModel: SpecificMonthViewModel
     private lateinit var viewModelFactory: SpecificMonthViewModelFactory
 
-    private lateinit var yearArg: String
-    private lateinit var monthArg: String
+    private var yearArg: Int = -1
+    private var monthArg: Int = -1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,8 +28,8 @@ class SpecificMonthFragment : Fragment() {
 
         // Grab values from SafeArgs
         val args = SpecificMonthFragmentArgs.fromBundle(arguments!!)
-        yearArg = args.yearArg.toString()
-        monthArg = String.format("%02d", args.monthArg + 1)
+        yearArg = args.yearArg
+        monthArg = args.monthArg + 1
 
         binding.recyclerView.adapter =
             RecyclerViewAdapter(
@@ -47,6 +47,7 @@ class SpecificMonthFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         // Create an instance of the ViewModel Factory
         val application = requireNotNull(this.activity).application
         val dataSource = EntryDatabase.getInstance(application).entryDao
@@ -56,6 +57,8 @@ class SpecificMonthFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(SpecificMonthViewModel::class.java)
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
+
+        activity?.title = viewModel.getDateString()
     }
 
     // Overflow menu methods

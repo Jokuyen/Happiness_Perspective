@@ -1,6 +1,7 @@
 package com.jokuyen.happinessperspective.currentMonth
 
 import android.app.Application
+import android.icu.text.DateFormatSymbols
 import android.icu.util.Calendar
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
@@ -36,5 +37,11 @@ class CurrentMonthViewModel(private val dao: EntryDao, application: Application)
         uiScope.launch {
             clearCurrentMonthAndYear()
         }
+    }
+
+    fun getDateString(): String {
+        val monthString = DateFormatSymbols().getMonths()[c.get(Calendar.MONTH)]
+
+        return monthString + " " + currentYear
     }
 }

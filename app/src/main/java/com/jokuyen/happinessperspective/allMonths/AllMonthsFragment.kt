@@ -5,6 +5,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.jokuyen.happinessperspective.CurrentYearSingleton
 import com.jokuyen.happinessperspective.R
 
 import com.jokuyen.happinessperspective.RecyclerViewAdapter
@@ -48,6 +49,8 @@ class AllMonthsFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(AllMonthsViewModel::class.java)
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
+
+        activity?.title = CurrentYearSingleton.currentYear.toString()
     }
 
     // Overflow menu methods
