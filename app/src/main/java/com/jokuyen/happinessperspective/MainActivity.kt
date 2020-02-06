@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.settingsFragment -> "Settings"
 
                 R.id.newEntryFragment -> "New Entry"
-                R.id.entryDetailsFragment -> "Entry Details"
+                R.id.entryDetailsFragment -> "Entry"
 
                 else -> " "
             }

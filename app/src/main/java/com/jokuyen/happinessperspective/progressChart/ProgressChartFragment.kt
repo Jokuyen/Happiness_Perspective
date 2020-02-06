@@ -46,7 +46,7 @@ class ProgressChartFragment : Fragment() {
         // Set up chart
         viewModel.entries.observe(viewLifecycleOwner, Observer {
             barChartView.data = viewModel.getBarChartData()
-            barChartView.setVisibleXRangeMaximum(4f)
+            barChartView.setVisibleXRangeMaximum(6f)
             barChartView.invalidate() // Refresh the chart
         })
 
@@ -58,12 +58,13 @@ class ProgressChartFragment : Fragment() {
         val xAxis = barChartView.xAxis
         xAxis.valueFormatter = ChartXAxisFormatter()
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM)
-        xAxis.setLabelCount(4)
+        xAxis.setLabelCount(6)
         xAxis.setTextSize(18f)
 
         // Y-axis formatting
         val yAxis = barChartView.axisLeft
         yAxis.setTextSize(18f)
+        yAxis.setGranularity(1f)
 
         // Remove unnecessary labels
         barChartView.getDescription().setEnabled(false)
