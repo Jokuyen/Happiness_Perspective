@@ -75,5 +75,10 @@
             android:id="@+id/action_entireYearFragment_to_entryDetailsFragment"
             app:destination="@id/entryDetailsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.jokuyen.happinessperspective.about.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
 
 </navigation>

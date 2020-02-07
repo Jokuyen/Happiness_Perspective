@@ -8,17 +8,22 @@
 
     <item
         android:id="@+id/currentMonthFragment"
-        android:icon="@drawable/ic_view_agenda_24px"
+        android:icon="@drawable/ic_view_stream_24px"
         android:title="Current Month" />
 
     <item
         android:id="@+id/entireYearFragment"
-        android:icon="@drawable/ic_view_agenda_24px"
+        android:icon="@drawable/ic_view_stream_24px"
         android:title="Entire Year" />
 
     <item
         android:id="@+id/settingsFragment"
         android:icon="@drawable/ic_settings_24px"
         android:title="Settings" />
+
+    <item
+        android:id="@+id/aboutFragment"
+        android:icon="@drawable/ic_help_outline_24px"
+        android:title="About" />
 
 </menu>

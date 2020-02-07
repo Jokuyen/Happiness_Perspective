@@ -8,4 +8,7 @@
     <string name="subjectHintText">Subject</string>
     <string name="noteHintText">Note (Optional)</string>
     <string name="home_string">Write About a Positive Experience</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment -> "The Happiness Perspective"
                 R.id.progressChartFragment -> "Progress Chart"
                 R.id.settingsFragment -> "Settings"
+                R.id.aboutFragment -> "About the Project"
 
                 R.id.newEntryFragment -> "New Entry"
 
