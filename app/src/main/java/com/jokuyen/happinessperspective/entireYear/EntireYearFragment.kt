@@ -41,12 +41,6 @@ class EntireYearFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-        return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
         // Create an instance of the ViewModel Factory
         val application = requireNotNull(this.activity).application
         val dataSource = EntryDatabase.getInstance(application).entryDao
@@ -56,6 +50,14 @@ class EntireYearFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(EntireYearViewModel::class.java)
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
+
+        viewModel.refreshList()
+
+        return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
         activity?.title = CurrentYearSingleton.currentYear.toString()
 
@@ -75,8 +77,6 @@ class EntireYearFragment : Fragment() {
 
             chipGroup.addView(chip)
         }
-
-        binding.recyclerView.itemAnimator?.setChangeDuration(0)
     }
 
     // Overflow menu methods

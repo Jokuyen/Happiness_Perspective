@@ -18,6 +18,10 @@ class EntireYearViewModel(private val dao: EntryDao, application: Application) :
     val entries : LiveData<List<Entry>>
         get() = _entries
 
+    private val _entriesChangedStatus = dao.getAllEntries()
+    val entriesChangedStatus : LiveData<List<Entry>>
+        get() = _entriesChangedStatus
+
     private var filter = FilterHolder()
 
     // Setup coroutines
@@ -116,6 +120,10 @@ class EntireYearViewModel(private val dao: EntryDao, application: Application) :
                 currentMonthFilter = -1
             }
         }
+    }
+
+    fun refreshList() {
+        getEntireYear()
     }
 
     override fun onCleared() {
