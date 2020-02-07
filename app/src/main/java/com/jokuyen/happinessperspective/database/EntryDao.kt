@@ -34,13 +34,6 @@ interface EntryDao {
     @Query("SELECT * FROM entry_table WHERE year = :inputYear ORDER BY month ASC, day ASC, entryId ASC")
     fun getEntriesForSelectedYear(inputYear: Int): LiveData<List<Entry>>
 
-    // Get entries methods for Non-LiveData list
-    @Query("SELECT * FROM entry_table WHERE month = :inputMonth AND year = :inputYear ORDER BY day ASC, entryId ASC")
-    fun getEntriesForSelectedMonthAndYearList(inputMonth: Int, inputYear: Int): List<Entry>
-
-    @Query("SELECT * FROM entry_table WHERE year = :inputYear ORDER BY month ASC, day ASC, entryId ASC")
-    fun getEntriesForSelectedYearList(inputYear: Int): List<Entry>
-
     // Clear methods
     @Query("DELETE FROM entry_table")
     fun clear()

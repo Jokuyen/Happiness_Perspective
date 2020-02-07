@@ -37,6 +37,12 @@ class EntireYearFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
+        return binding.root
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
         // Create an instance of the ViewModel Factory
         val application = requireNotNull(this.activity).application
         val dataSource = EntryDatabase.getInstance(application).entryDao
@@ -47,31 +53,33 @@ class EntireYearFragment : Fragment() {
         binding.setLifecycleOwner(this)
         binding.viewModel = viewModel
 
-        viewModel.refreshList()
-
-        return binding.root
+        activity?.title = CurrentYearSingleton.currentYear.toString()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        activity?.title = CurrentYearSingleton.currentYear.toString()
+    override fun onStart() {
+        super.onStart()
 
         // Setup ChipGroup
         val chipGroup = binding.monthChipGroup
         val inflater = LayoutInflater.from(chipGroup.context)
+        val chip = mutableListOf<Chip>()
 
         // 2. Make new Chip view for each month
         for (i in 0..11) {
-            val chip = inflater.inflate(R.layout.month_chip, chipGroup, false) as Chip
-            chip.text = DateFormatSymbols().getMonths()[i]
-            chip.tag = i
+            chip.add(inflater.inflate(R.layout.month_chip, chipGroup, false) as Chip)
+            chip[i].text = DateFormatSymbols().getMonths()[i]
+            chip[i].tag = i
 
-            chip.setOnCheckedChangeListener { button, isChecked ->
+            chip[i].setOnCheckedChangeListener { button, isChecked ->
                 viewModel.onFilterChanged(button.tag as Int, isChecked)
             }
 
-            chipGroup.addView(chip)
+            chipGroup.addView(chip[i])
+        }
+
+        val monthFilter = viewModel.getMonthFilter()
+        if (monthFilter != -1) {
+            chipGroup.check(chip[monthFilter!!].id)
         }
     }
 
