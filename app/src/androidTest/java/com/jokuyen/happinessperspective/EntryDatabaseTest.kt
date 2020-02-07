@@ -26,10 +26,6 @@ class EntryDatabaseTest: HelperFunction {
     val currentMonth = c.get(Calendar.MONTH)
     val currentDay = c.get(Calendar.DAY_OF_MONTH)
 
-    val monthString = String.format("%02d", currentMonth + 1)
-    val dayString = String.format("%02d", currentDay)
-    val dateString = currentYear.toString() + "-" + monthString + "-" + dayString
-
     @Before
     fun createDb() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
@@ -51,7 +47,7 @@ class EntryDatabaseTest: HelperFunction {
     @Test
     @Throws(Exception::class)
     fun insertAndGetEntry_ShouldReturnMostRecentEntry() {
-        val entry = Entry(date = dateString, subject = "Test Subject", note = null, year = currentYear, month = currentMonth, day = currentDay)
+        val entry = Entry(subject = "Test Subject", note = null, year = currentYear, month = currentMonth, day = currentDay)
         dao.insert(entry)
         val result = dao.getMostRecentEntry()
 
@@ -62,23 +58,23 @@ class EntryDatabaseTest: HelperFunction {
     @Test
     @Throws(Exception::class)
     fun insertAndDeleteEntry_ShouldReturnNull() {
-        val entry = Entry(date = dateString, subject = "Test Subject", note = null, year = currentYear, month = currentMonth, day = currentDay)
+        val entry = Entry(subject = "Test Subject", note = null, year = currentYear, month = currentMonth, day = currentDay)
         dao.insert(entry)
         dao.clear()
 
         val result = dao.getMostRecentEntry()
 
-        assertEquals(null, result?.date)
+        assertEquals(null, result?.entryId)
     }
 
     @Test
     @Throws(Exception::class)
-    fun getEntriesForSelectedYear_ShouldReturnEntriesStartingWithMostRecent() {
-        val entry1 = Entry(date = dateString, subject = "Test Subject 1", note = null, year = currentYear, month = currentMonth, day = currentDay)
-        val entry2 = Entry(date = dateString, subject = "Test Subject 2", note = null, year = currentYear, month = currentMonth, day = currentDay)
-        val entry3 = Entry(date = dateString, subject = "Test Subject 3", note = null, year = currentYear, month = currentMonth, day = currentDay)
-        val entry4 = Entry(date = dateString, subject = "Test Subject 4", note = null, year = currentYear, month = currentMonth, day = currentDay)
-        val entry5 = Entry(date = dateString, subject = "Test Subject 5", note = null, year = currentYear, month = currentMonth, day = currentDay)
+    fun getEntriesForSelectedYear_ShouldReturnEntriesInAscendingOrder() {
+        val entry1 = Entry(subject = "Test Subject 1", note = null, year = currentYear, month = currentMonth, day = currentDay)
+        val entry2 = Entry(subject = "Test Subject 2", note = null, year = currentYear, month = currentMonth, day = currentDay)
+        val entry3 = Entry(subject = "Test Subject 3", note = null, year = currentYear, month = currentMonth, day = currentDay)
+        val entry4 = Entry(subject = "Test Subject 4", note = null, year = currentYear, month = currentMonth, day = currentDay)
+        val entry5 = Entry(subject = "Test Subject 5", note = null, year = currentYear, month = currentMonth, day = currentDay)
 
         dao.insert(entry1)
         dao.insert(entry2)
@@ -86,26 +82,26 @@ class EntryDatabaseTest: HelperFunction {
         dao.insert(entry4)
         dao.insert(entry5)
 
-        val results = dao.getEntriesForSelectedYear(currentYear.toString())
+        val results = dao.getEntriesForSelectedYear(currentYear)
 
-        // First value of the list should be most recent entry, which would be entry5
-        assertEquals(5, results.getOrAwaitValue()[0].entryId)
-        assertEquals(4, results.getOrAwaitValue()[1].entryId)
+        // First value of the list should be oldest entry, which would be entry1
+        assertEquals(1, results.getOrAwaitValue()[0].entryId)
+        assertEquals(2, results.getOrAwaitValue()[1].entryId)
         assertEquals(3, results.getOrAwaitValue()[2].entryId)
-        assertEquals(2, results.getOrAwaitValue()[3].entryId)
-        assertEquals(1, results.getOrAwaitValue()[4].entryId)
+        assertEquals(4, results.getOrAwaitValue()[3].entryId)
+        assertEquals(5, results.getOrAwaitValue()[4].entryId)
     }
 
     @Test
     @Throws(Exception::class)
     fun getYears_ShouldReturnArrayOfUniqueYearsInAscendingOrder() {
         // Insert years from 2019 - 2022, with 3 duplicates of 2020
-        val entry1 = Entry(date = dateString, subject = "Test Subject 1", note = null, year = 2020, month = currentMonth, day = currentDay)
-        val entry2 = Entry(date = dateString, subject = "Test Subject 2", note = null, year = 2021, month = currentMonth, day = currentDay)
-        val entry3 = Entry(date = dateString, subject = "Test Subject 3", note = null, year = 2022, month = currentMonth, day = currentDay)
-        val entry4 = Entry(date = dateString, subject = "Test Subject 4", note = null, year = 2020, month = currentMonth, day = currentDay)
-        val entry5 = Entry(date = dateString, subject = "Test Subject 5", note = null, year = 2019, month = currentMonth, day = currentDay)
-        val entry6 = Entry(date = dateString, subject = "Test Subject 6", note = null, year = 2020, month = currentMonth, day = currentDay)
+        val entry1 = Entry(subject = "Test Subject 1", note = null, year = 2020, month = currentMonth, day = currentDay)
+        val entry2 = Entry(subject = "Test Subject 2", note = null, year = 2021, month = currentMonth, day = currentDay)
+        val entry3 = Entry(subject = "Test Subject 3", note = null, year = 2022, month = currentMonth, day = currentDay)
+        val entry4 = Entry(subject = "Test Subject 4", note = null, year = 2020, month = currentMonth, day = currentDay)
+        val entry5 = Entry(subject = "Test Subject 5", note = null, year = 2019, month = currentMonth, day = currentDay)
+        val entry6 = Entry(subject = "Test Subject 6", note = null, year = 2020, month = currentMonth, day = currentDay)
 
         dao.insert(entry1)
         dao.insert(entry2)
