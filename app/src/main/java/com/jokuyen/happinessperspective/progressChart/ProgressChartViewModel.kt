@@ -13,7 +13,7 @@ import com.jokuyen.happinessperspective.database.Entry
 import com.jokuyen.happinessperspective.database.EntryDao
 
 class ProgressChartViewModel(private val dao: EntryDao, application: Application) : AndroidViewModel(application) {
-    private val currentYear = CurrentYearSingleton.currentYear.toString()
+    private val currentYear = CurrentYearSingleton.currentYear
 
     private val _entries = dao.getEntriesForSelectedYear(currentYear)
     val entries: LiveData<List<Entry>>

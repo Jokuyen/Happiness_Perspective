@@ -15,10 +15,7 @@ class SpecificMonthViewModel(
     private val dao: EntryDao,
     application: Application) : AndroidViewModel(application) {
 
-    private val yearArgString = yearArg.toString()
-    private val monthArgString = String.format("%02d", monthArg)
-
-    private val _entries = dao.getEntriesForSelectedMonthAndYear(monthArgString, yearArgString)
+    private val _entries = dao.getEntriesForSelectedMonthAndYear(monthArg, yearArg)
     val entries : LiveData<List<Entry>>
         get() = _entries
 
@@ -29,7 +26,7 @@ class SpecificMonthViewModel(
 
     private suspend fun clearCurrentMonthAndYear() {
         withContext(Dispatchers.IO) {
-            dao.clearCurrentMonthAndYear(monthArgString, yearArgString)
+            dao.clearCurrentMonthAndYear(monthArg, yearArg)
         }
 
         Toast.makeText(getApplication(), "Deleted All Entries for Current Month!", Toast.LENGTH_SHORT).show()
@@ -42,8 +39,8 @@ class SpecificMonthViewModel(
     }
 
     fun getDateString(): String {
-        val monthString = DateFormatSymbols().getMonths()[monthArg - 1]
+        val monthString = DateFormatSymbols().getMonths()[monthArg]
 
-        return monthString + " " + yearArgString
+        return "$monthString $yearArg"
     }
 }

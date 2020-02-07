@@ -10,7 +10,6 @@ import kotlinx.coroutines.*
 
 class NewEntryViewModel(private val dao: EntryDao, application: Application) : AndroidViewModel(application) {
     // Variables for entry object
-    private var _date: String = ""
     private var _subject: String = ""
     private var _note: String? = null
     private var _year: Int = -1
@@ -21,11 +20,6 @@ class NewEntryViewModel(private val dao: EntryDao, application: Application) : A
         _year = year
         _month = month
         _day = day
-
-        val monthString = String.format("%02d", month + 1)
-        val dayString = String.format("%02d", day)
-
-        _date = year.toString() + "-" + monthString + "-" + dayString
     }
 
     fun setSubject(input: String) {
@@ -55,7 +49,7 @@ class NewEntryViewModel(private val dao: EntryDao, application: Application) : A
 
     fun insertEntry() {
         uiScope.launch {
-            val newEntry = Entry(date = _date, subject = _subject, note = _note, year = _year, month = _month, day = _day)
+            val newEntry = Entry(subject = _subject, note = _note, year = _year, month = _month, day = _day)
             insert(newEntry)
         }
     }

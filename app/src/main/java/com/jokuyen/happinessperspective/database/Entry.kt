@@ -14,9 +14,6 @@ data class Entry (
     @PrimaryKey(autoGenerate = true)
     var entryId: Int = 0,
 
-    // Month range will be 01-12, not 00-11
-    var date: String,
-
     var subject: String,
 
     var note: String?,
@@ -30,9 +27,8 @@ data class Entry (
 ) : Parcelable {
     // Formatting for Entry ViewHolder (MMM DD, YYYY)
     fun getDateString() : String {
-        val dateObject = LocalDate.parse(date, DateTimeFormatter.ISO_DATE)
-        val monthString = DateFormatSymbols().getMonths()[dateObject.monthValue - 1]
+        val monthString = DateFormatSymbols().getMonths()[month]
 
-        return monthString + " " + dateObject.dayOfMonth + ", " + dateObject.year
+        return "$monthString $day, $year"
     }
 }

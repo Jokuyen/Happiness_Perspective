@@ -18,9 +18,6 @@ import com.jokuyen.happinessperspective.database.EntryDatabase
 import com.jokuyen.happinessperspective.databinding.EntireYearFragmentBinding
 import kotlinx.android.synthetic.main.entire_year_fragment.*
 
-//Todo: Try changing RecyclerViewListener to reduce flickering
-//Todo: Get rid of Entry's date property and change parameters of Dao's methods from using Strings to Ints when accessing dates
-
 class EntireYearFragment : Fragment() {
     private lateinit var binding: EntireYearFragmentBinding
     private lateinit var viewModel: EntireYearViewModel

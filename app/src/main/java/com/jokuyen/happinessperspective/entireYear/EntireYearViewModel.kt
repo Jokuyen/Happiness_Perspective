@@ -11,7 +11,7 @@ import kotlinx.coroutines.*
 
 class EntireYearViewModel(private val dao: EntryDao, application: Application) : AndroidViewModel(application) {
     private val c = Calendar.getInstance()
-    private var currentYear = CurrentYearSingleton.currentYear.toString()
+    private var currentYear = CurrentYearSingleton.currentYear
 
     private var _entries = MutableLiveData<List<Entry>>()
     val entries : LiveData<List<Entry>>
@@ -36,7 +36,7 @@ class EntireYearViewModel(private val dao: EntryDao, application: Application) :
 
     private suspend fun initializeListSuspend(): List<Entry> {
         return withContext(Dispatchers.IO) {
-            dao.getEntriesForSelectedYearTEST(currentYear)
+            dao.getEntriesForSelectedYearList(currentYear)
         }
     }
 
@@ -64,8 +64,7 @@ class EntireYearViewModel(private val dao: EntryDao, application: Application) :
 
     private suspend fun getNewList(): List<Entry> {
         return withContext(Dispatchers.IO) {
-            val monthString = String.format("%02d", filter.currentMonthFilter + 1)
-            dao.getEntriesForSelectedMonthAndYearTEST(monthString, currentYear)
+            dao.getEntriesForSelectedMonthAndYearList(filter.currentMonthFilter, currentYear)
         }
     }
 

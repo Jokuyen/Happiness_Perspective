@@ -105,7 +105,7 @@ class NewEntryFragment : Fragment() {
                 viewModel.setDate(inputYear, inputMonth, inputDay)
 
                 val monthString = DateFormatSymbols().getMonths()[inputMonth]
-                date_picker_button.text = monthString + " " + inputDay + ", " + inputYear
+                date_picker_button.text = "$monthString $inputDay, $inputYear"
 
                 changeDatePickerButtonColor()
 

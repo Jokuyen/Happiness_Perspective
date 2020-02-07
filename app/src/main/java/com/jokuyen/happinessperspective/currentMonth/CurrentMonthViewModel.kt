@@ -13,8 +13,8 @@ import kotlinx.coroutines.*
 
 class CurrentMonthViewModel(private val dao: EntryDao, application: Application) : AndroidViewModel(application) {
     private val c = Calendar.getInstance()
-    private var currentYear = CurrentYearSingleton.currentYear.toString()
-    private var currentMonth = String.format("%02d", c.get(Calendar.MONTH) + 1)
+    private var currentYear = CurrentYearSingleton.currentYear
+    private var currentMonth = c.get(Calendar.MONTH)
 
     private val _entries = dao.getEntriesForSelectedMonthAndYear(currentMonth, currentYear)
     val entries : LiveData<List<Entry>>
@@ -42,6 +42,6 @@ class CurrentMonthViewModel(private val dao: EntryDao, application: Application)
     fun getDateString(): String {
         val monthString = DateFormatSymbols().getMonths()[c.get(Calendar.MONTH)]
 
-        return monthString + " " + currentYear
+        return "$monthString $currentYear"
     }
 }

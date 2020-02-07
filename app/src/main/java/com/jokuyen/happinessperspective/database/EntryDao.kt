@@ -14,6 +14,7 @@ interface EntryDao {
     @Update
     fun update(input: Entry)
 
+    // Get list of existing years
     @Query("SELECT DISTINCT year FROM entry_table ORDER BY year ASC")
     fun getYears(): LiveData<Array<Int>>
 
@@ -24,18 +25,21 @@ interface EntryDao {
     @Query("SELECT * FROM entry_table ORDER BY entryId DESC LIMIT 1")
     fun getMostRecentEntry(): Entry?
 
-    @Query("SELECT * FROM entry_table ORDER BY entryId DESC")
+    @Query("SELECT * FROM entry_table ORDER BY entryId ASC")
     fun getAllEntries(): LiveData<List<Entry>>
 
-    @Query("SELECT * FROM entry_table " +
-            "WHERE strftime('%m', date) = :month AND strftime('%Y', date) = :year " +
-            "ORDER BY strftime('%d', date) DESC, entryId DESC")
-    fun getEntriesForSelectedMonthAndYear(month: String, year: String): LiveData<List<Entry>>
+    @Query("SELECT * FROM entry_table WHERE month = :inputMonth AND year = :inputYear ORDER BY day ASC, entryId ASC")
+    fun getEntriesForSelectedMonthAndYear(inputMonth: Int, inputYear: Int): LiveData<List<Entry>>
 
-    @Query("SELECT * FROM entry_table " +
-            "WHERE strftime('%Y', date) = :year " +
-            "ORDER BY strftime('%m', date) ASC, strftime('%d', date) ASC, entryId ASC")
-    fun getEntriesForSelectedYear(year: String): LiveData<List<Entry>>
+    @Query("SELECT * FROM entry_table WHERE year = :inputYear ORDER BY month ASC, day ASC, entryId ASC")
+    fun getEntriesForSelectedYear(inputYear: Int): LiveData<List<Entry>>
+
+    // Get entries methods for Non-LiveData list
+    @Query("SELECT * FROM entry_table WHERE month = :inputMonth AND year = :inputYear ORDER BY day ASC, entryId ASC")
+    fun getEntriesForSelectedMonthAndYearList(inputMonth: Int, inputYear: Int): List<Entry>
+
+    @Query("SELECT * FROM entry_table WHERE year = :inputYear ORDER BY month ASC, day ASC, entryId ASC")
+    fun getEntriesForSelectedYearList(inputYear: Int): List<Entry>
 
     // Clear methods
     @Query("DELETE FROM entry_table")
@@ -44,20 +48,9 @@ interface EntryDao {
     @Query("DELETE FROM entry_table WHERE entryId = :entryId")
     fun clearCurrentEntry(entryId: Int)
 
-    @Query("DELETE FROM entry_table WHERE strftime('%m', date) = :month AND strftime('%Y', date) = :year")
-    fun clearCurrentMonthAndYear(month: String, year: String)
+    @Query("DELETE FROM entry_table WHERE month = :inputMonth AND year = :inputYear")
+    fun clearCurrentMonthAndYear(inputMonth: Int, inputYear: Int)
 
-    @Query("DELETE FROM entry_table WHERE strftime('%Y', date) = :year")
-    fun clearCurrentYear(year: String)
-
-    // TEST
-    @Query("SELECT * FROM entry_table " +
-            "WHERE strftime('%m', date) = :month AND strftime('%Y', date) = :year " +
-            "ORDER BY strftime('%d', date) DESC, entryId DESC")
-    fun getEntriesForSelectedMonthAndYearTEST(month: String, year: String): List<Entry>
-
-    @Query("SELECT * FROM entry_table " +
-            "WHERE strftime('%Y', date) = :year " +
-            "ORDER BY strftime('%m', date) ASC, strftime('%d', date) ASC, entryId ASC")
-    fun getEntriesForSelectedYearTEST(year: String): List<Entry>
+    @Query("DELETE FROM entry_table WHERE year = :inputYear")
+    fun clearCurrentYear(inputYear: Int)
 }

@@ -30,7 +30,7 @@ class SpecificMonthFragment : Fragment() {
         // Grab values from SafeArgs
         val args = SpecificMonthFragmentArgs.fromBundle(arguments!!)
         yearArg = args.yearArg
-        monthArg = args.monthArg + 1
+        monthArg = args.monthArg
 
         // Setup RecyclerView
         val adapter = RecyclerViewAdapter(OnClickListener {
@@ -41,7 +41,6 @@ class SpecificMonthFragment : Fragment() {
         })
 
         binding.recyclerView.adapter = adapter
-
 
         setHasOptionsMenu(true)
 
