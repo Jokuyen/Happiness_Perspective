@@ -53,4 +53,7 @@ interface EntryDao {
 
     @Query("DELETE FROM entry_table WHERE year = :inputYear")
     fun clearCurrentYear(inputYear: Int)
+
+    @Query("DELETE FROM entry_table WHERE year = :inputYear AND month = :inputMonth")
+    fun clearSelectedMonthAndYear(inputMonth: Int, inputYear: Int)
 }

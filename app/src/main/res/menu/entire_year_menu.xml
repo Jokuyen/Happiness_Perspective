@@ -2,6 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/selectedMonthMenu"
+        android:title="Delete Selected Month" />
+
+    <item
         android:id="@+id/entireYearMenu"
         android:title="Delete Entire Year" />
 </menu>

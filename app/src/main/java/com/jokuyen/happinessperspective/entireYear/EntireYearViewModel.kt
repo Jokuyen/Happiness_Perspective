@@ -1,6 +1,7 @@
 package com.jokuyen.happinessperspective.entireYear
 
 import android.app.Application
+import android.icu.text.DateFormatSymbols
 import android.icu.util.Calendar
 import android.widget.Toast
 import androidx.lifecycle.*
@@ -39,7 +40,30 @@ class EntireYearViewModel(private val dao: EntryDao, application: Application) :
         }
     }
 
-    // Clear methods
+    // Clear selected month
+    fun onClearSelectedYearButtonClick() {
+        if (filter.currentMonthFilter != -1) {
+            uiScope.launch {
+                clearSelectedMonth()
+            }
+        }
+        else {
+            Toast.makeText(getApplication(), "No Month Selected!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private suspend fun clearSelectedMonth() {
+        withContext(Dispatchers.IO) {
+            dao.clearSelectedMonthAndYear(filter.currentMonthFilter, currentYear)
+        }
+
+        _entries.value = listOf()
+
+        val monthString = DateFormatSymbols().getMonths()[filter.currentMonthFilter]
+        Toast.makeText(getApplication(), "Deleted All Entries for $monthString!", Toast.LENGTH_SHORT).show()
+    }
+
+    // Clear entire year
     fun onClearCurrentYearButtonClick() {
         uiScope.launch {
             clearCurrentYear()

@@ -87,6 +87,10 @@ class EntireYearFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.selectedMonthMenu -> {
+                viewModel.onClearSelectedYearButtonClick()
+                return true
+            }
             R.id.entireYearMenu -> {
                 viewModel.onClearCurrentYearButtonClick()
                 return true
