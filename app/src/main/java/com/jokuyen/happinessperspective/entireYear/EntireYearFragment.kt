@@ -4,19 +4,15 @@ import android.icu.text.DateFormatSymbols
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
 import com.jokuyen.happinessperspective.CurrentYearSingleton
 import com.jokuyen.happinessperspective.OnClickListener
 import com.jokuyen.happinessperspective.R
-
 import com.jokuyen.happinessperspective.RecyclerViewAdapter
-import com.jokuyen.happinessperspective.database.Entry
 import com.jokuyen.happinessperspective.database.EntryDatabase
 import com.jokuyen.happinessperspective.databinding.EntireYearFragmentBinding
-import kotlinx.android.synthetic.main.entire_year_fragment.*
 
 class EntireYearFragment : Fragment() {
     private lateinit var binding: EntireYearFragmentBinding

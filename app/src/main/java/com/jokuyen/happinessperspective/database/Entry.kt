@@ -5,8 +5,6 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 @Parcelize
 @Entity(tableName = "entry_table")
