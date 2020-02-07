@@ -19,7 +19,6 @@ class EntryDetailsViewModel(entry: Entry, private val dao: EntryDao, app: Applic
 
     // Set up coroutines
     private var viewModelJob = Job()
-
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     private suspend fun clearCurrentEntry() {

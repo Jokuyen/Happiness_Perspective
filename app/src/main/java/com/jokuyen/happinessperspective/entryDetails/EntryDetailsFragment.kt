@@ -40,6 +40,8 @@ class EntryDetailsFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(EntryDetailsViewModel::class.java)
 
         binding.viewModel = viewModel
+
+        activity?.title = viewModel.selectedEntry.value!!.getDateString()
     }
 
     // Overflow menu methods
