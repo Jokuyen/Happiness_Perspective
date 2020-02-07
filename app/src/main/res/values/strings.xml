@@ -7,4 +7,5 @@
     <string name="pick_date">Enter Date</string>
     <string name="subjectHintText">Subject</string>
     <string name="noteHintText">Note (Optional)</string>
+    <string name="home_string">Write About a Positive Experience</string>
 </resources>

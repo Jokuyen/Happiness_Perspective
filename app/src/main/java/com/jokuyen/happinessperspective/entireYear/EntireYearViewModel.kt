@@ -13,9 +13,10 @@ class EntireYearViewModel(private val dao: EntryDao, application: Application) :
 
     private var filter = FilterHolder()
 
+    private val _entriesForEntireYear = dao.getEntriesForSelectedYear(currentYear)
     val entries = Transformations.map(filter.monthFilter) {
         if (it == -1) {
-            dao.getEntriesForSelectedYear(currentYear)
+            _entriesForEntireYear
         }
         else {
             dao.getEntriesForSelectedMonthAndYear(it, currentYear)
@@ -30,10 +31,6 @@ class EntireYearViewModel(private val dao: EntryDao, application: Application) :
         filter.update(monthFilter, isChecked)
     }
 
-    fun getMonthFilter(): Int? {
-        return filter.monthFilter.value
-    }
-
     private class FilterHolder {
         var monthFilter = MutableLiveData(-1)
 
@@ -45,6 +42,10 @@ class EntireYearViewModel(private val dao: EntryDao, application: Application) :
                 monthFilter.value = -1
             }
         }
+    }
+
+    fun getMonthFilter(): Int? {
+        return filter.monthFilter.value
     }
 
     // Clear selected month

@@ -77,6 +77,7 @@ class EntireYearFragment : Fragment() {
             chipGroup.addView(chip[i])
         }
 
+        // Save checked chip when navigating back from EntryDetails screen
         val monthFilter = viewModel.getMonthFilter()
         if (monthFilter != -1) {
             chipGroup.check(chip[monthFilter!!].id)
