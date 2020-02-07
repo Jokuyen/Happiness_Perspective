@@ -24,17 +24,16 @@ class EntireYearViewModel(private val dao: EntryDao, application: Application) :
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     init {
-        initializeList()
+        getEntireYear()
     }
 
-    // TEST
-    private fun initializeList() {
+    private fun getEntireYear() {
         uiScope.launch {
-            _entries.value = initializeListSuspend()
+            _entries.value = getEntireYearList()
         }
     }
 
-    private suspend fun initializeListSuspend(): List<Entry> {
+    private suspend fun getEntireYearList(): List<Entry> {
         return withContext(Dispatchers.IO) {
             dao.getEntriesForSelectedYearList(currentYear)
         }
@@ -52,25 +51,32 @@ class EntireYearViewModel(private val dao: EntryDao, application: Application) :
             dao.clearCurrentYear(currentYear)
         }
 
+        _entries.value = listOf()
         Toast.makeText(getApplication(), "Deleted All Entries for Current Year!", Toast.LENGTH_SHORT).show()
     }
 
     // Setup ChipGroup
-    private fun onQueryChanged() {
-        uiScope.launch {
-            _entries.value = getNewList()
+    fun onFilterChanged(monthFilter: Int, isChecked: Boolean) {
+        filter.update(monthFilter, isChecked)
+
+        if (filter.currentMonthFilter != -1)
+        {
+            filterChanged()
+        }
+        else {
+            getEntireYear()
         }
     }
 
-    private suspend fun getNewList(): List<Entry> {
+    private fun filterChanged() {
+        uiScope.launch {
+            _entries.value = getFilteredList()
+        }
+    }
+
+    private suspend fun getFilteredList(): List<Entry> {
         return withContext(Dispatchers.IO) {
             dao.getEntriesForSelectedMonthAndYearList(filter.currentMonthFilter, currentYear)
-        }
-    }
-
-    fun onFilterChanged(monthFilter: Int, isChecked: Boolean) {
-        if (this.filter.update(monthFilter, isChecked)) {
-            onQueryChanged()
         }
     }
 
@@ -78,17 +84,13 @@ class EntireYearViewModel(private val dao: EntryDao, application: Application) :
         var currentMonthFilter: Int = -1
             private set
 
-        fun update(newMonthFilter: Int, isChecked: Boolean): Boolean {
+        fun update(newMonthFilter: Int, isChecked: Boolean) {
             if (isChecked) {
                 currentMonthFilter = newMonthFilter
-                return true
             }
             else if (currentMonthFilter == newMonthFilter) {
                 currentMonthFilter = -1
-                return true
             }
-
-            return false
         }
     }
 
