@@ -1,6 +1,8 @@
 package com.jokuyen.happinessperspective.settings
 
+import android.app.AlertDialog
 import android.app.Application
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +13,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.jokuyen.happinessperspective.CurrentYearSingleton
+import com.jokuyen.happinessperspective.R
 import com.jokuyen.happinessperspective.database.EntryDatabase
 import com.jokuyen.happinessperspective.databinding.SettingsFragmentBinding
 import kotlinx.android.synthetic.main.settings_fragment.*
@@ -40,8 +44,6 @@ class SettingsFragment : Fragment() {
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(SettingsViewModel::class.java)
 
-        binding.viewModel = viewModel
-
         // Setup year spinner
         viewModel.yearsArray.observe(viewLifecycleOwner, Observer {
             val adapter: ArrayAdapter<Any>
@@ -63,6 +65,23 @@ class SettingsFragment : Fragment() {
             val yearPosition = adapter.getPosition(CurrentYearSingleton.currentYear)
             current_year_spinner.setSelection(yearPosition)
         })
+
+        //Setup clearDatabase button
+        binding.clearDatabaseButton.setOnClickListener {
+
+            val dialogBuilder = MaterialAlertDialogBuilder(context, R.style.MaterialAlertDialog_MaterialComponents_Title_Text)
+                .setTitle("Delete All Entries")
+                .setMessage("Do you want to delete everything?")
+                .setPositiveButton("Proceed") { _, _ ->
+                    viewModel.onClearDatabaseButtonClick()
+                }
+                .setNeutralButton("Cancel") { _, _ ->
+
+                }
+
+            val alert = dialogBuilder.create()
+            alert.show()
+        }
     }
 
 }

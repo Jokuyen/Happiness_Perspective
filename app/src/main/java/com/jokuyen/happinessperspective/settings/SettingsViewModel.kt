@@ -36,6 +36,6 @@ class SettingsViewModel(private val dao: EntryDao, application: Application) : A
         val c = Calendar.getInstance()
         CurrentYearSingleton.changeCurrentYear(c.get(Calendar.YEAR))
 
-        Toast.makeText(getApplication(), "All Entries Deleted!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(getApplication(), "All Entries Deleted!", Toast.LENGTH_LONG).show()
     }
 }
