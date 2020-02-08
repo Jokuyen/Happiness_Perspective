@@ -1,9 +1,14 @@
+### Google Play Store
+[Google Play Store](https://play.google.com/store/apps/details?id=com.jokuyen.happinessperspective)
+
 ### About the App
 I started with an idea:
 
 ![Whiteboard Sketch](/images/whiteboardDraft.jpg)
 
 Which resulted to this after 2 weeks:
+
+![Navigation Graph](/images/navigationGraph.png)
 
 ![Home Screen](/images/homeScreen.jpg)
 
