@@ -1,4 +1,7 @@
 ### About the App
+
+#### [Google Play Store Link](https://play.google.com/store/apps/details?id=com.jokuyen.happinessperspective)
+
 I started with an idea:
 
 ![Whiteboard Sketch](/images/whiteboardDraft.jpg)
@@ -22,8 +25,6 @@ Which resulted to this after 2 weeks:
 ![Entry Details](/images/entryDetailsScreen.jpg)
 
 ![Settings](/images/settingsScreen.jpg)
-
-### [Google Play Store Link](https://play.google.com/store/apps/details?id=com.jokuyen.happinessperspective)
 
 ### Features
 - Room (implements SQLite)
