@@ -1,7 +1,5 @@
-### About the App
-
 #### [Google Play Store Link](https://play.google.com/store/apps/details?id=com.jokuyen.happinessperspective)
-
+### About the App
 I started with an idea:
 
 ![Whiteboard Sketch](/images/whiteboardDraft.jpg)
