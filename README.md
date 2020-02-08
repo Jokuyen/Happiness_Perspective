@@ -21,6 +21,19 @@ Which resulted to this after 2 weeks:
 
 ![Settings](/images/settingsScreen.jpg)
 
+### Features
+- Room (implements SQLite)
+- MPAndroidChart
+- RecyclerView + Cards
+- Material Design Components
+
+### Challenges I Faced
+- Android Development: Tremendously steep learning curve!
+- RecyclerView: Too difficult to implement a second type of ViewHolder
+- MPAndroidChart: Learning to use the library
+- Room: Lack of date format
+- Unit Testing: LiveData
+
 ### My Android Development Journey
 
 In late November of 2019, I started "Developing Android Apps with Kotlin"⁠ on Udacity; it's a two-month-long course developed by Google itself. Two appropriate months later, I had finished the course and have published a personal project (Recipe Searcher) in the Google Play Store. Now that I've had a taste of the experience, I want to continue growing my Android Development muscles. So, that brings us to this next project!
@@ -36,19 +49,6 @@ In an extreme case, a Tetris addict shared a similar experience in the *Philadel
 Such an odd condition came to be known as the Tetris Effect. This study shows that the more people practice looking for patterns, the more it affects their way of viewing reality. As Shawn Achor puts it: “The Tetris Effect isn’t just about video games; it is a metaphor for the way our brains dictate the way we see the world around us.” 
 
 This could mean people who tend to complain are training their brains to overlook more of the positives for the negatives; there's a saying that the more you practice something, the easier it becomes. An excellent real-life scenario would be a software developer searching for bugs in a program, which could lead to training their brain to look for problems in everything else, like in relationships, friendships, themself, etc. Because of this book, I was inspired to create this app in order to practice gratitude more often (and to flex the Android Development muscles, of course). I wouldn't be surprised if there are already a bunch of similar apps on the market, but the least I could do is bring more awareness to the importance of gratitude. The main takeaway I want you to realize is that the more positive the mind becomes, the more good you’ll notice in the world!
-
-### Features
-- Room (implements SQLite)
-- MPAndroidChart
-- RecyclerView
-- Material Design
-
-### Challenges
-- Android Development: Tremendously steep learning curve!
-- RecyclerView: Too difficult to implement a second type of ViewHolder
-- MPAndroidChart: Learning to use the library
-- Room: Lack of date format
-- Unit Testing: LiveData
 
 ### Notable Bugs
 
@@ -80,8 +80,12 @@ Afternote: I realized a simpler solution would be using an Int array of size=12 
 
 #### Practicing SQL Knowledge
 
-#### Transferring Previous Experience to MPAndroidChart
+#### Using Previous Experience of Graphing to Learn MPAndroidChart
 
 #### Tried Unit Testing
 
-#### Avoided global variable by using Singleton class
+#### Design Decisions: Learning about Depedency Injection, but deciding using Singleton would be better for my project
+
+#### Used Chips for Filtering
+
+#### Learned more about LiveData and Transformations.switchMap
