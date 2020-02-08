@@ -1,6 +1,25 @@
-## Note for Website Visitors
+### About the App
+I started with an idea:
 
-I started this project on January 23, 2020. Therefore, this is still a work on progress. Thanks for coming by!
+![Whiteboard Sketch](/images/whiteboardDraft.jpg)
+
+Which resulted to this after 2 weeks:
+
+![Home Screen](/images/homeScreen.jpg)
+
+![Navigation Drawer](/images/navDrawer.jpg)
+
+![Progress Chart](/images/progressChart.jpg)
+
+![New Entry Screen](/images/newEntryScreen.jpg)
+
+![Date Picker](/images/datePicker.jpg)
+
+![Entire Year](/images/entireYearScreen.jpg)
+
+![Entry Details](/images/entryDetailsScreen.jpg)
+
+![Settings](/images/settingsScreen.jpg)
 
 ### My Android Development Journey
 
@@ -57,7 +76,7 @@ I'm definitely adding this sneaky bug to my Hall of Fame.
 
 Afternote: I realized a simpler solution would be using an Int array of size=12 to track the months instead of a map. Nonetheless, this was a good learning experience in spite of the total frustration!
 
-### Moments of Accomplishment - This Section is a Work in Progress! Come back later :)
+### Moments of Accomplishment
 
 #### Practicing SQL Knowledge
 
