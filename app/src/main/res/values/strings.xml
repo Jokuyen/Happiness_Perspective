@@ -9,6 +9,14 @@
     <string name="noteHintText">Note (Optional)</string>
     <string name="home_string">Write About a Positive Experience</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_text">
+        Track daily positive experiences and practice gratitude more often.
+        The more you look for good moments in life, the easier it\'ll be to notice them!
+
+        \n\nThis app helps you write and save your thoughts; by doing so, you\'re
+        training your brain to be more positive.
+
+        \n\nA good advice would be to start small,
+        like submitting at least 3 entries per week.
+    </string>
 </resources>
