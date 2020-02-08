@@ -1,5 +1,3 @@
-### [Google Play Store Link](https://play.google.com/store/apps/details?id=com.jokuyen.happinessperspective)
-
 ### About the App
 I started with an idea:
 
@@ -24,6 +22,8 @@ Which resulted to this after 2 weeks:
 ![Entry Details](/images/entryDetailsScreen.jpg)
 
 ![Settings](/images/settingsScreen.jpg)
+
+### [Google Play Store Link](https://play.google.com/store/apps/details?id=com.jokuyen.happinessperspective)
 
 ### Features
 - Room (implements SQLite)
