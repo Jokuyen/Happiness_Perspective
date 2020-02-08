@@ -1,5 +1,4 @@
-### Google Play Store
-[Google Play Store](https://play.google.com/store/apps/details?id=com.jokuyen.happinessperspective)
+### [Google Play Store Link](https://play.google.com/store/apps/details?id=com.jokuyen.happinessperspective)
 
 ### About the App
 I started with an idea:
